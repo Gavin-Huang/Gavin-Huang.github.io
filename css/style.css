@@ -176,10 +176,10 @@ body {
   display: none;
 }
 .logo {
-  display: block;
+  display: none;
   width: 150px;
   height: 24px;
-  background: url("images/logo.png") no-repeat;
+  background: none;
   -webkit-background-size: 150px 24px;
   -moz-background-size: 150px 24px;
   background-size: 150px 24px;
