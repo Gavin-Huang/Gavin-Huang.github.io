@@ -15,15 +15,15 @@
 <meta property="og:description" content="题目
 方程g(x,y)=（x^2+y^2-1)^2-x^2*y^2，g(x,y)=0方程  能画出一个美丽的爱心，现在给定一个点（X，Y），其中 X、Y分别属于N(μ1，σ1^2)、N(μ1，σ1^2)的正态分布， 那么这个点在这个爱心里面的概率是多少，精确到0.1（小数点后保留1位有效数，比如0.1, 0.2等）思路解析
 当时看到这个题目是一脸懵逼的，没见过这样纯数学的题目，我开始想着用数学的方">
-<meta property="og:image" content="https://github.com/Gavin-Huang/myMarkdownPics/blob/master/res/MathLab1.PNG">
-<meta property="og:image" content="https://github.com/Gavin-Huang/myMarkdownPics/blob/master/res/MathLab2.PNG">
-<meta property="og:updated_time" content="2017-03-07T07:52:02.924Z">
+<meta property="og:image" content="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/MathLab1.PNG">
+<meta property="og:image" content="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/MathLab2.PNG">
+<meta property="og:updated_time" content="2017-03-07T08:03:27.269Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一道算法题的解题思路">
 <meta name="twitter:description" content="题目
 方程g(x,y)=（x^2+y^2-1)^2-x^2*y^2，g(x,y)=0方程  能画出一个美丽的爱心，现在给定一个点（X，Y），其中 X、Y分别属于N(μ1，σ1^2)、N(μ1，σ1^2)的正态分布， 那么这个点在这个爱心里面的概率是多少，精确到0.1（小数点后保留1位有效数，比如0.1, 0.2等）思路解析
 当时看到这个题目是一脸懵逼的，没见过这样纯数学的题目，我开始想着用数学的方">
-<meta name="twitter:image" content="https://github.com/Gavin-Huang/myMarkdownPics/blob/master/res/MathLab1.PNG">
+<meta name="twitter:image" content="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/MathLab1.PNG">
   
   
     <link rel="icon" href="/favicon.png">
@@ -170,11 +170,11 @@
 <li>那么现在的问题就是如何确定（x,y）是否在方程<code>（x^2+y^2-1)^2-x^2*y^2=0</code>所围成的图形内。首先得知道这个图形大致样子，MathLab是个好东西，画函数图像非常好用。</li>
 <li>在mathlab的命令行中使用 <code>ezplot(&#39;(x^2+y^2-1)^2-x^2*y^2=0&#39;)</code></li>
 </ul>
-<p><img src="https://github.com/Gavin-Huang/myMarkdownPics/blob/master/res/MathLab1.PNG" alt=""></p>
+<p><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/MathLab1.PNG" alt=""></p>
 <ul>
 <li>使用<code>grid on</code>命令显示网格方便看交点位置</li>
 </ul>
-<p><img src="https://github.com/Gavin-Huang/myMarkdownPics/blob/master/res/MathLab2.PNG" alt=""></p>
+<p><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/MathLab2.PNG" alt=""></p>
 <ul>
 <li>一般来说，f(x，y)&gt;0，（x,y）肯定在外面，小于零肯定在里面，但是这个函数是以x^2和y^2为基元，其最高为4次方，所以这种判断方法是不够准确的，我们经过测试可以知道在内心的和外边的点使f(x，y)&gt;0，在四个花瓣里的点使得f(x，y)&lt;0.这里要直接判断是否在圆心里也是十分困难的。经过观察，在其四个交点所围成的矩形里肯定就是在里面的，验证一下：（1，1）代入到g(x,y)是等于0的说明（1,1）刚好在其图像的花瓣上，说明以[（-1,1）,（1,1）,（1,-1）,（-1,-1）]围成的矩形都在g(x,y)=0所围成的图形内。</li>
 <li>于是编码如下</li>
@@ -184,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/02/一道算法题的解题思路/" data-id="cizz8mxvf0001sws7lltttao1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/02/一道算法题的解题思路/" data-id="cizz9147t0003zws7iruitg6l" class="article-share-link">Share</a>
       
       
     </footer>
