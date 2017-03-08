@@ -94,11 +94,11 @@
           </li>
         
           <li>
-            <a href="/2017/03/07/Ubuntu showsocks chrome 配置说明/">Ubuntu下showsocks chrome 配置说明</a>
+            <a href="/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/">ubuntu14.04下GPU版tensorflow安装说明</a>
           </li>
         
           <li>
-            <a href="/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/">ubuntu14.04下GPU版tensorflow安装说明</a>
+            <a href="/2017/03/07/Ubuntu showsocks chrome 配置说明/">Ubuntu下showsocks chrome 配置说明</a>
           </li>
         
           <li>
@@ -163,76 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/08/几种目标检测特征描述器/" data-id="cj00uujqp0005fss79xrtw1nq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Ubuntu showsocks chrome 配置说明" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/07/Ubuntu showsocks chrome 配置说明/" class="article-date">
-  <time datetime="2017-03-07T02:17:23.000Z" itemprop="datePublished">2017-03-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/07/Ubuntu showsocks chrome 配置说明/">Ubuntu下showsocks chrome 配置说明</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="在ubuntu下安装shadowsocks并且配置chrome"><a href="#在ubuntu下安装shadowsocks并且配置chrome" class="headerlink" title="在ubuntu下安装shadowsocks并且配置chrome"></a>在ubuntu下安装shadowsocks并且配置chrome</h3><ul>
-<li>因为要安装ubuntu环境下的tensorflow,需要连接一些外网的软件包，所以需要搭建翻墙shadowsocks,我搭建成功了，中途遇到很多坑，写下这篇教程来记录一下配置。<h2 id="安装chrome"><a href="#安装chrome" class="headerlink" title="安装chrome"></a>安装chrome</h2>使用<code>ctrl+alt+t</code>进入terminal</li>
-<li>将下载源加入到系统的源列表:<ul>
-<li><code>sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/</code></li>
-</ul>
-</li>
-<li>导入谷歌软件的公钥:<ul>
-<li><code>wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -</code></li>
-</ul>
-</li>
-<li>用于对当前系统的可用更新列表进行更新:<ul>
-<li><code>sudo apt-get update</code></li>
-</ul>
-</li>
-<li>谷歌 Chrome 浏览器（稳定版）的安装:<ul>
-<li><code>sudo apt-get install google-chrome-stable</code></li>
-</ul>
-</li>
-<li>启动chrome:<ul>
-<li><code>/usr/bin/google-chrome-stable</code><h2 id="安装shadowsocks-qt5"><a href="#安装shadowsocks-qt5" class="headerlink" title="安装shadowsocks-qt5"></a>安装shadowsocks-qt5</h2></li>
-</ul>
-</li>
-<li>安装好chrome后，再安装shadowsocks-qt5</li>
-<li>依次使用以下命令行：<ul>
-<li><code>sudo add-apt-repository ppa:hzwhuang/ss-qt5</code></li>
-<li><code>sudo apt-get update</code></li>
-<li><code>sudo apt-get install shadowsocks-qt5</code><h2 id="配置shadowsocks"><a href="#配置shadowsocks" class="headerlink" title="配置shadowsocks"></a>配置shadowsocks</h2></li>
-</ul>
-</li>
-<li>安装完成后在软件中心搜索<code>shadowsocks</code>就可以看到相关图标，点击图标就可以进行配置</li>
-<li>新建服务器，填写server地址、密码等参数，（重要：将连接类型设置为sock5才可以进行连接，将<code>debug</code>打开可以看到更详细的错误）</li>
-<li>完成后点击<code>connect</code>,查看日志，无报错说明配置良好<h2 id="使用命令行启动chrome"><a href="#使用命令行启动chrome" class="headerlink" title="使用命令行启动chrome"></a>使用命令行启动chrome</h2>在terminal里使用<code>google-chrome --proxy-server=&quot;sock5://127.0.0.1:1080&quot;</code>命令行打开chrome,才可以上外网，这一步很重要！</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/07/Ubuntu showsocks chrome 配置说明/" data-id="cj00uujqf0001fss7jkybe372" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/08/几种目标检测特征描述器/" data-id="cj00wrxk7000328s7y0icpor0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -326,25 +257,97 @@
 <p>  可能会报出一大堆warnning,不要着急，不要惊慌，只要不是error就好<br>  我在这一步等了一个小时，编的很慢要耐心，但是没有出错，顺利完成</p>
 <h2 id="基本测试"><a href="#基本测试" class="headerlink" title="基本测试"></a>基本测试</h2><p> python 测试：<br> <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> $ <span class="keyword">python</span> # <span class="built_in">or</span> <span class="keyword">python3</span></div><div class="line">$ import tensorflow <span class="keyword">as</span> <span class="keyword">tf</span></div><div class="line">$ sess = <span class="keyword">tf</span>.InteractiveSession()</div><div class="line">$ sess.<span class="keyword">close</span>()</div></pre></td></tr></table></figure></p>
 <p>这个时候会出来以下输出：</p>
-<h2 id="最终测试"><a href="#最终测试" class="headerlink" title="最终测试"></a>最终测试</h2><p>  进入tensorflow下目录跑一跑mnist_summaries.py，我的报出一个错：<br>  <code>Couldn&#39;t open CUDA library libcupti.so.7.5.</code><br>  查找相关资料需要将<code>libcupti.so.7.5.</code>所在文件目录<code>/usr/local/cuda/extras/CUPTI/lib64</code>加入到环境变量中，使用以下代码:<br>  <figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>cd ~</div><div class="line"><span class="variable">$ </span>gedit /.bashrc</div></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_26_44.png" alt=""></p>
+<h2 id="最终测试"><a href="#最终测试" class="headerlink" title="最终测试"></a>最终测试</h2><p>  进入tensorflow下目录跑一跑mnist_with_summaries.py，具体目录为<code>~/tensorflow/tensorflow-1.0.0/tensorflow/examples/tutorials/mnist/</code>我的报出一个错：<br>  <code>Couldn&#39;t open CUDA library libcupti.so.7.5.</code><br>  查找相关资料需要将<code>libcupti.so.7.5.</code>所在文件目录<code>/usr/local/cuda/extras/CUPTI/lib64</code>加入到环境变量中，使用以下代码:<br>  <figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>cd ~</div><div class="line"><span class="variable">$ </span>gedit /.bashrc</div></pre></td></tr></table></figure></p>
 <ul>
 <li><p>打开该文件夹将以下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="string">"<span class="variable">$LD_LIBRARY_PATH</span>:/usr/local/cuda/lib64"</span></div><div class="line"><span class="built_in">export</span> CUDA_HOME=/usr/<span class="built_in">local</span>/cuda</div><div class="line"><span class="built_in">export</span> DYLD_LIBRARY_PATH=<span class="string">"<span class="variable">$DYLD_LIBRARY_PATH</span>:<span class="variable">$CUDA_HOME</span>/lib"</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$CUDA_HOME</span>/bin:<span class="variable">$PATH</span>"</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>改为</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> CUDA_HOME=/usr/<span class="built_in">local</span>/cuda</div><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$&#123;LD_LIBRARY_PATH&#125;</span>:/usr/<span class="built_in">local</span>/cuda/extras/CUPTI/lib64:/usr/<span class="built_in">local</span>/cuda/lib64</div><div class="line"><span class="built_in">export</span> DYLD_LIBRARY_PATH=<span class="string">"<span class="variable">$DYLD_LIBRARY_PATH</span>:<span class="variable">$CUDA_HOME</span>/lib"</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$CUDA_HOME</span>/bin:<span class="variable">$PATH</span>"</span></div></pre></td></tr></table></figure>
 <ul>
 <li>完成编辑后保存文件，使用以下命令重新载入<code>.bashrc</code>文件：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">source</span> ~/.bashrc</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-<p>再运行，就可以了</p>
+<p>再运行，就可以了,以下是运行截图</p>
+<p><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_26_14.png" alt=""></p>
+<p><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_26_59.png" alt=""></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/" data-id="cj00uujqf0002fss7stmxvemj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/" data-id="cj00wrxk7000128s75y40pae5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ubuntu showsocks chrome 配置说明" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/07/Ubuntu showsocks chrome 配置说明/" class="article-date">
+  <time datetime="2017-03-07T02:17:23.000Z" itemprop="datePublished">2017-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/07/Ubuntu showsocks chrome 配置说明/">Ubuntu下showsocks chrome 配置说明</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="在ubuntu下安装shadowsocks并且配置chrome"><a href="#在ubuntu下安装shadowsocks并且配置chrome" class="headerlink" title="在ubuntu下安装shadowsocks并且配置chrome"></a>在ubuntu下安装shadowsocks并且配置chrome</h3><ul>
+<li>因为要安装ubuntu环境下的tensorflow,需要连接一些外网的软件包，所以需要搭建翻墙shadowsocks,我搭建成功了，中途遇到很多坑，写下这篇教程来记录一下配置。<h2 id="安装chrome"><a href="#安装chrome" class="headerlink" title="安装chrome"></a>安装chrome</h2>使用<code>ctrl+alt+t</code>进入terminal</li>
+<li>将下载源加入到系统的源列表:<ul>
+<li><code>sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/</code></li>
+</ul>
+</li>
+<li>导入谷歌软件的公钥:<ul>
+<li><code>wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -</code></li>
+</ul>
+</li>
+<li>用于对当前系统的可用更新列表进行更新:<ul>
+<li><code>sudo apt-get update</code></li>
+</ul>
+</li>
+<li>谷歌 Chrome 浏览器（稳定版）的安装:<ul>
+<li><code>sudo apt-get install google-chrome-stable</code></li>
+</ul>
+</li>
+<li>启动chrome:<ul>
+<li><code>/usr/bin/google-chrome-stable</code><h2 id="安装shadowsocks-qt5"><a href="#安装shadowsocks-qt5" class="headerlink" title="安装shadowsocks-qt5"></a>安装shadowsocks-qt5</h2></li>
+</ul>
+</li>
+<li>安装好chrome后，再安装shadowsocks-qt5</li>
+<li>依次使用以下命令行：<ul>
+<li><code>sudo add-apt-repository ppa:hzwhuang/ss-qt5</code></li>
+<li><code>sudo apt-get update</code></li>
+<li><code>sudo apt-get install shadowsocks-qt5</code><h2 id="配置shadowsocks"><a href="#配置shadowsocks" class="headerlink" title="配置shadowsocks"></a>配置shadowsocks</h2></li>
+</ul>
+</li>
+<li>安装完成后在软件中心搜索<code>shadowsocks</code>就可以看到相关图标，点击图标就可以进行配置</li>
+<li>新建服务器，填写server地址、密码等参数，（重要：将连接类型设置为sock5才可以进行连接，将<code>debug</code>打开可以看到更详细的错误）</li>
+<li>完成后点击<code>connect</code>,查看日志，无报错说明配置良好<br><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_27_21.png" alt=""><h2 id="使用命令行启动chrome"><a href="#使用命令行启动chrome" class="headerlink" title="使用命令行启动chrome"></a>使用命令行启动chrome</h2>在terminal里使用<code>google-chrome --proxy-server=&quot;sock5://127.0.0.1:1080&quot;</code>命令行打开chrome,才可以上外网，这一步很重要！</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/07/Ubuntu showsocks chrome 配置说明/" data-id="cj00wrxk7000228s71l1zstu3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -380,7 +383,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/02/GDI+高速画图程序解析/" data-id="cj00uujqf0000fss7237qczir" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/02/GDI+高速画图程序解析/" data-id="cj00wrxk7000528s7fcj3l2sq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -433,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/02/一道算法题的解题思路/" data-id="cj00uujqp0004fss712ah8wbk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/02/一道算法题的解题思路/" data-id="cj00wrxk7000428s7sl2uw5kk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -519,7 +522,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/02/SmartWinForm说明/" data-id="cj00uujqp0003fss79k3g12gd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/02/SmartWinForm说明/" data-id="cj00wrxk7000028s7oxvmlw9m" class="article-share-link">Share</a>
       
       
     </footer>

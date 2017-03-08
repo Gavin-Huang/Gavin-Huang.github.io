@@ -27,7 +27,10 @@ cudnn 5
 tensorflow 1.0.0 release
 python 2.7.6
 显">
-<meta property="og:updated_time" content="2017-03-08T10:55:20.076Z">
+<meta property="og:image" content="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_26_44.png">
+<meta property="og:image" content="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_26_14.png">
+<meta property="og:image" content="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_26_59.png">
+<meta property="og:updated_time" content="2017-03-08T11:51:53.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu14.04下GPU版tensorflow安装说明">
 <meta name="twitter:description" content="ubuntu14.04下GPU版tensorflow安装说明 tensorflow目前是最热门的机器学习框架，当前做一个图像识别分类的项目需要用到这个框架，所以今天在自己的电脑上搭建这个框架，写一个博客记录一下安装过程
@@ -39,6 +42,7 @@ cudnn 5
 tensorflow 1.0.0 release
 python 2.7.6
 显">
+<meta name="twitter:image" content="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_26_44.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -119,11 +123,11 @@ python 2.7.6
           </li>
         
           <li>
-            <a href="/2017/03/07/Ubuntu showsocks chrome 配置说明/">Ubuntu下showsocks chrome 配置说明</a>
+            <a href="/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/">ubuntu14.04下GPU版tensorflow安装说明</a>
           </li>
         
           <li>
-            <a href="/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/">ubuntu14.04下GPU版tensorflow安装说明</a>
+            <a href="/2017/03/07/Ubuntu showsocks chrome 配置说明/">Ubuntu下showsocks chrome 配置说明</a>
           </li>
         
           <li>
@@ -244,25 +248,28 @@ python 2.7.6
 <p>  可能会报出一大堆warnning,不要着急，不要惊慌，只要不是error就好<br>  我在这一步等了一个小时，编的很慢要耐心，但是没有出错，顺利完成</p>
 <h2 id="基本测试"><a href="#基本测试" class="headerlink" title="基本测试"></a>基本测试</h2><p> python 测试：<br> <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> $ <span class="keyword">python</span> # <span class="built_in">or</span> <span class="keyword">python3</span></div><div class="line">$ import tensorflow <span class="keyword">as</span> <span class="keyword">tf</span></div><div class="line">$ sess = <span class="keyword">tf</span>.InteractiveSession()</div><div class="line">$ sess.<span class="keyword">close</span>()</div></pre></td></tr></table></figure></p>
 <p>这个时候会出来以下输出：</p>
-<h2 id="最终测试"><a href="#最终测试" class="headerlink" title="最终测试"></a>最终测试</h2><p>  进入tensorflow下目录跑一跑mnist_summaries.py，我的报出一个错：<br>  <code>Couldn&#39;t open CUDA library libcupti.so.7.5.</code><br>  查找相关资料需要将<code>libcupti.so.7.5.</code>所在文件目录<code>/usr/local/cuda/extras/CUPTI/lib64</code>加入到环境变量中，使用以下代码:<br>  <figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>cd ~</div><div class="line"><span class="variable">$ </span>gedit /.bashrc</div></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_26_44.png" alt=""></p>
+<h2 id="最终测试"><a href="#最终测试" class="headerlink" title="最终测试"></a>最终测试</h2><p>  进入tensorflow下目录跑一跑mnist_with_summaries.py，具体目录为<code>~/tensorflow/tensorflow-1.0.0/tensorflow/examples/tutorials/mnist/</code>我的报出一个错：<br>  <code>Couldn&#39;t open CUDA library libcupti.so.7.5.</code><br>  查找相关资料需要将<code>libcupti.so.7.5.</code>所在文件目录<code>/usr/local/cuda/extras/CUPTI/lib64</code>加入到环境变量中，使用以下代码:<br>  <figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>cd ~</div><div class="line"><span class="variable">$ </span>gedit /.bashrc</div></pre></td></tr></table></figure></p>
 <ul>
 <li><p>打开该文件夹将以下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="string">"<span class="variable">$LD_LIBRARY_PATH</span>:/usr/local/cuda/lib64"</span></div><div class="line"><span class="built_in">export</span> CUDA_HOME=/usr/<span class="built_in">local</span>/cuda</div><div class="line"><span class="built_in">export</span> DYLD_LIBRARY_PATH=<span class="string">"<span class="variable">$DYLD_LIBRARY_PATH</span>:<span class="variable">$CUDA_HOME</span>/lib"</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$CUDA_HOME</span>/bin:<span class="variable">$PATH</span>"</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>改为</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> CUDA_HOME=/usr/<span class="built_in">local</span>/cuda</div><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$&#123;LD_LIBRARY_PATH&#125;</span>:/usr/<span class="built_in">local</span>/cuda/extras/CUPTI/lib64:/usr/<span class="built_in">local</span>/cuda/lib64</div><div class="line"><span class="built_in">export</span> DYLD_LIBRARY_PATH=<span class="string">"<span class="variable">$DYLD_LIBRARY_PATH</span>:<span class="variable">$CUDA_HOME</span>/lib"</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$CUDA_HOME</span>/bin:<span class="variable">$PATH</span>"</span></div></pre></td></tr></table></figure>
 <ul>
 <li>完成编辑后保存文件，使用以下命令重新载入<code>.bashrc</code>文件：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">source</span> ~/.bashrc</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-<p>再运行，就可以了</p>
+<p>再运行，就可以了,以下是运行截图</p>
+<p><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_26_14.png" alt=""></p>
+<p><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_26_59.png" alt=""></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/" data-id="cj00uujqf0002fss7stmxvemj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/" data-id="cj00wrxk7000128s75y40pae5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -271,19 +278,19 @@ python 2.7.6
     
 <nav id="article-nav">
   
-    <a href="/2017/03/07/Ubuntu showsocks chrome 配置说明/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/08/几种目标检测特征描述器/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Ubuntu下showsocks chrome 配置说明
+          几种目标检测特征描述器
         
       </div>
     </a>
   
   
-    <a href="/2017/03/02/GDI+高速画图程序解析/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/07/Ubuntu showsocks chrome 配置说明/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">GDI+高速画图程序解析</div>
+      <div class="article-nav-title">Ubuntu下showsocks chrome 配置说明</div>
     </a>
   
 </nav>
