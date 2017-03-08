@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ubuntu14.04下GPU版tensorflow安装说明 | 黄海亮的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ubuntu14.04下GPU版tensorflow安装说明 tensorflow目前是最热门的机器学习框架，当前做一个图像识别分类的项目需要用到这个框架，所以今天在自己的电脑上搭建这个框架，写一个博客记录一下安装过程
+我的环境
+nvida 1060 6g 显卡
+ubuntu14.04
+cuda 7.5
+cudnn 5
+tensorflow 1.0.0 release
+python 2.7.6
+显">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu14.04下GPU版tensorflow安装说明">
+<meta property="og:url" content="http://yoursite.com/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/index.html">
+<meta property="og:site_name" content="黄海亮的博客">
+<meta property="og:description" content="ubuntu14.04下GPU版tensorflow安装说明 tensorflow目前是最热门的机器学习框架，当前做一个图像识别分类的项目需要用到这个框架，所以今天在自己的电脑上搭建这个框架，写一个博客记录一下安装过程
+我的环境
+nvida 1060 6g 显卡
+ubuntu14.04
+cuda 7.5
+cudnn 5
+tensorflow 1.0.0 release
+python 2.7.6
+显">
+<meta property="og:updated_time" content="2017-03-08T10:55:20.076Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ubuntu14.04下GPU版tensorflow安装说明">
+<meta name="twitter:description" content="ubuntu14.04下GPU版tensorflow安装说明 tensorflow目前是最热门的机器学习框架，当前做一个图像识别分类的项目需要用到这个框架，所以今天在自己的电脑上搭建这个框架，写一个博客记录一下安装过程
+我的环境
+nvida 1060 6g 显卡
+ubuntu14.04
+cuda 7.5
+cudnn 5
+tensorflow 1.0.0 release
+python 2.7.6
+显">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'> -->
+  <!-- <link href="//fonts.googleapis.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css"> -->
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css">
+  <link href='//fonts.useso.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <a href="/" class="logo">黄海亮的博客</a>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about/index.html">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        </div>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/ppoffice/hexo-theme-alex" title="Fork me on GitHub"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <nav id="mobile-nav" class="off">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about/index.html" class="mobile-nav-link">About</a>
+  
+  <div id="search-form-wrap-mobile">
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+  </div>
+</nav>
+      <div class="outer">
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/08/几种目标检测特征描述器/">几种目标检测特征描述器</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/">ubuntu14.04下GPU版tensorflow安装说明</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/07/Ubuntu showsocks chrome 配置说明/">Ubuntu下showsocks chrome 配置说明</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/02/GDI+高速画图程序解析/">GDI+高速画图程序解析</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/02/一道算法题的解题思路/">一道算法题的解题思路</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="https://github.com/Gavin-Huang">Gavin-Huang Github</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <section id="main"><article id="post-ubuntu14.04下GPU版tensorflow安装说明" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/" class="article-date">
+  <time datetime="2017-03-07T02:17:23.000Z" itemprop="datePublished">2017-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ubuntu14.04下GPU版tensorflow安装说明
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ubuntu14-04下GPU版tensorflow安装说明"><a href="#ubuntu14-04下GPU版tensorflow安装说明" class="headerlink" title="ubuntu14.04下GPU版tensorflow安装说明"></a>ubuntu14.04下GPU版tensorflow安装说明</h1><p> tensorflow目前是最热门的机器学习框架，当前做一个图像识别分类的项目需要用到这个框架，所以今天在自己的电脑上搭建这个框架，写一个博客记录一下安装过程</p>
+<h2 id="我的环境"><a href="#我的环境" class="headerlink" title="我的环境"></a>我的环境</h2><ul>
+<li>nvida 1060 6g 显卡</li>
+<li>ubuntu14.04</li>
+<li>cuda 7.5</li>
+<li>cudnn 5</li>
+<li>tensorflow 1.0.0 release</li>
+<li>python 2.7.6<ul>
+<li>显卡需要nvida <code>Compute capbility</code>&gt;3.0，这个<a href="https://developer.nvidia.com/cuda-gpus" target="_blank" rel="external">连接</a>查看显卡计算能力等级.</li>
+</ul>
+</li>
+</ul>
+<h2 id="安装必要的库"><a href="#安装必要的库" class="headerlink" title="安装必要的库"></a>安装必要的库</h2><ul>
+<li>可以使用<code>ctrl+shift+v</code>在命令行窗口粘贴命令，使用以下命令安装java8</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo <span class="built_in">add</span>-apt-repository <span class="keyword">pp</span><span class="variable">a:webupd8team</span>/java</div><div class="line">$ sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></div><div class="line">$ sudo apt-<span class="built_in">get</span> install oracle-java8-installer git <span class="keyword">python</span>-dev <span class="keyword">python3</span>-dev build-essential <span class="keyword">python</span>-pip <span class="keyword">python3</span>-pip <span class="keyword">python</span>-virtualenv swig <span class="keyword">python</span>-wheel libcurl3-dev</div></pre></td></tr></table></figure>
+<h2 id="安装Bazel"><a href="#安装Bazel" class="headerlink" title="安装Bazel"></a>安装Bazel</h2><ul>
+<li>因为我们使用的是在本地机器上编译tensorflow,所以需要装<a href="http://www.bazel.io/docs/install.html" target="_blank" rel="external">Bazel</a>，这是一种google开发并开源的自动化软件构建工具，tensorflow需要他来进行本地化编译。使用以下命令行进行安装：</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">echo</span> <span class="string">"deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8"</span> | sudo tee /etc/apt/sources.<span class="keyword">list</span>.d/bazel.<span class="keyword">list</span></div><div class="line">$ curl -<span class="keyword">k</span> http<span class="variable">s:</span>//storage.googleapis.<span class="keyword">com</span>/bazel-apt/doc/apt-key.pub.gpg | sudo apt-key <span class="built_in">add</span> -</div><div class="line">$ sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></div><div class="line">$ sudo apt-<span class="built_in">get</span> install bazel</div><div class="line">$ sudo apt-<span class="built_in">get</span> upgrade bazel</div></pre></td></tr></table></figure>
+<h2 id="下载和安装-Nvidia-cuda-7-5-以及-CudNN"><a href="#下载和安装-Nvidia-cuda-7-5-以及-CudNN" class="headerlink" title="下载和安装 Nvidia cuda 7.5 以及 CudNN"></a>下载和安装 Nvidia cuda 7.5 以及 CudNN</h2><h3 id="安装cuda7-5"><a href="#安装cuda7-5" class="headerlink" title="安装cuda7.5"></a>安装cuda7.5</h3><ul>
+<li>从<a href="https://developer.nvidia.com/cuda-75-downloads-archive" target="_blank" rel="external">nvida</a>官网上下载cuda7.5的<a href="http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb" target="_blank" rel="external">.deb</a>文件，需要注册和填写一下反馈表才能下载，使用以下命令行进行解压缩和安装：</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">cd</span> ~/Downloads # <span class="keyword">cd</span>到你下载cuda7.<span class="number">5</span>的地方</div><div class="line">$ sudo dpkg -i cuda-repo-ubuntu1404-<span class="number">7</span>-<span class="number">5</span>-local_7.<span class="number">5</span>-<span class="number">18</span>_amd64.<span class="keyword">deb</span></div><div class="line">$ sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></div><div class="line">$ sudo apt-<span class="built_in">get</span> install cuda</div></pre></td></tr></table></figure>
+<p>cuda将会安装到<code>/usr/local/cuda</code></p>
+<h3 id="安装cudNNv5-0"><a href="#安装cudNNv5-0" class="headerlink" title="安装cudNNv5.0"></a>安装cudNNv5.0</h3><ul>
+<li>下载<a href="https://developer.nvidia.com/cudnn" target="_blank" rel="external">CudNN</a>v5</li>
+<li>解压缩该文件并把头文件复制到指定目录：</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ tar xvzf cudnn-<span class="number">7.5</span>-linux-x64-v5.<span class="number">0</span>-ga.tgz</div><div class="line">$ sudo cp cuda<span class="regexp">/include/</span>cudnn.h <span class="regexp">/usr/</span>local<span class="regexp">/cuda/i</span>nclude</div><div class="line">$ sudo cp cuda<span class="regexp">/lib64/</span>libcudnn* <span class="regexp">/usr/</span>local<span class="regexp">/cuda/</span>lib64</div><div class="line">$ sudo chmod a+r <span class="regexp">/usr/</span>local<span class="regexp">/cuda/i</span>nclude<span class="regexp">/cudnn.h /u</span>sr<span class="regexp">/local/</span>cuda<span class="regexp">/lib64/</span>libcudnn*</div></pre></td></tr></table></figure>
+<h3 id="修改环境变量"><a href="#修改环境变量" class="headerlink" title="修改环境变量"></a>修改环境变量</h3><ul>
+<li><p>打开<code>.bashrc</code>文件</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>gedit ~<span class="regexp">/.bashrc</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>将以下代码粘贴到文件末尾将会使系统有cuda的环境变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="string">"<span class="variable">$LD_LIBRARY_PATH</span>:/usr/local/cuda/lib64"</span></div><div class="line"><span class="built_in">export</span> CUDA_HOME=/usr/<span class="built_in">local</span>/cuda</div><div class="line"><span class="built_in">export</span> DYLD_LIBRARY_PATH=<span class="string">"<span class="variable">$DYLD_LIBRARY_PATH</span>:<span class="variable">$CUDA_HOME</span>/lib"</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$CUDA_HOME</span>/bin:<span class="variable">$PATH</span>"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>完成编辑后保存文件，使用以下命令重新载入<code>.bashrc</code>文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">source</span> ~/.bashrc</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="clone-tensorflow"><a href="#clone-tensorflow" class="headerlink" title="clone tensorflow"></a>clone tensorflow</h2><p>  直接下载指定版本的<a href="https://github.com/tensorflow/tensorflow/archive/v1.0.0.tar.gz" target="_blank" rel="external">tensorflow</a>，下载完成后将该文拷到用户目录：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cp ~/Downloads/tensorflow-<span class="number">1.0</span>.<span class="number">0</span>-rc2<span class="selector-class">.tar</span><span class="selector-class">.gz</span> ~/tensorflow-<span class="number">1.0</span>.<span class="number">0</span>-rc2<span class="selector-class">.tar</span><span class="selector-class">.gz</span>  #将该文件拷到用户目录下</div><div class="line">$ tar xvzf tensorflow-<span class="number">1.0</span>.<span class="number">0</span>-rc2<span class="selector-class">.tar</span><span class="selector-class">.gz</span> #解压缩该文件</div></pre></td></tr></table></figure></p>
+<h2 id="配置config"><a href="#配置config" class="headerlink" title="配置config"></a>配置config</h2><p>  cd进入到解压缩的目录，使用以下命令行开始进行config配置:<br>  <figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">$</span> cd ~/tensorflow</div><div class="line"><span class="symbol">$</span> ./configure</div></pre></td></tr></table></figure></p>
+<ul>
+<li>之后就是一路<code>y</code>或者enter除了以下几项：<ul>
+<li>是否开启openCL  <code>n</code>  不需要opencl,这个需要更多配置环境</li>
+<li><code>Please specify the Cuda SDK version you want to use, e.g. 7.0. [Leave empty to use system default]:</code>   填7.5</li>
+<li><code>Please specify the Cudnn version you want to use. [Leave empty to use system default]:</code> 填 5</li>
+</ul>
+</li>
+<li>可能会遇到的问题(划重点)：<ul>
+<li>问题一： 下载swig 出错：connection timeout 这个说明你的网络有问题，多试几次，试一下自己去访问swig的source url: <a href="http://bazel-mirror.storage.googleapis.com/ufpr.dl.sourceforge.net/project/swig/swig/swig-3.0.8/swig-3.0.8.tar.gz" target="_blank" rel="external">url1</a>、<a href="http://ufpr.dl.sourceforge.net/project/swig/swig/swig-3.0.8/swig-3.0.8.tar.gz" target="_blank" rel="external">url2</a>、<a href="http://pilotfiber.dl.sourceforge.net/project/swig/swig/swig-3.0.8/swig-3.0.8.tar.gz" target="_blank" rel="external">url3</a>看能访问么，不能访问就要解决网络问题了</li>
+<li>问题二： 下载swig后校验 出错：sha256 sum was xxxxxxxxxxxx but wanted xxxxxxxxx 这个说明下载的文件校验和tensorflow里面存的校验值不对应，cd进tensorflow源码文件夹具体路径是<code>tensorflow/tensorflow/workspace.bzl</code>,gedit他，在文件270行左右<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">native.new_http_archive(</div><div class="line">   <span class="attr">name</span> = <span class="string">"swig"</span>,</div><div class="line">   <span class="attr">sha256</span> = <span class="string">"58a475dbbd4a4d7075e5fe86d4e54c9edde39847cdb96a3053d87cb64a23a453"</span>,</div><div class="line">   <span class="attr">urls</span> = [</div><div class="line">       <span class="string">"http://bazel-mirror.storage.googleapis.com/ufpr.dl.sourceforge.net/project/swig/swig/swig-3.0.8/swig-3.0.8.tar.gz"</span>,</div><div class="line">       <span class="string">"http://ufpr.dl.sourceforge.net/project/swig/swig/swig-3.0.8/swig-3.0.8.tar.gz"</span>,</div><div class="line">       <span class="string">"http://pilotfiber.dl.sourceforge.net/project/swig/swig/swig-3.0.8/swig-3.0.8.tar.gz"</span>,</div><div class="line">   ],</div><div class="line">   <span class="attr">strip_prefix</span> = <span class="string">"swig-3.0.8"</span>,</div><div class="line">   <span class="attr">build_file</span> = str(Label(<span class="string">"//third_party:swig.BUILD"</span>)),</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>将sha256的值改成你当前校验值，然后保存后重新config运行。</p>
+<h2 id="编译tensorflow"><a href="#编译tensorflow" class="headerlink" title="编译tensorflow"></a>编译tensorflow</h2><p>  使用以下命令编译GPU版本的tensorflow:<br>  <figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">bazel </span><span class="keyword">build </span>-c <span class="meta">opt</span> --config<span class="symbol">=cuda</span> //tensorflow/tools/pip_package:<span class="keyword">build_pip_package</span></div></pre></td></tr></table></figure></p>
+<p>  可能会报出一大堆warnning,不要着急，不要惊慌，只要不是error就好<br>  我在这一步等了一个小时，编的很慢要耐心，但是没有出错，顺利完成</p>
+<h2 id="基本测试"><a href="#基本测试" class="headerlink" title="基本测试"></a>基本测试</h2><p> python 测试：<br> <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> $ <span class="keyword">python</span> # <span class="built_in">or</span> <span class="keyword">python3</span></div><div class="line">$ import tensorflow <span class="keyword">as</span> <span class="keyword">tf</span></div><div class="line">$ sess = <span class="keyword">tf</span>.InteractiveSession()</div><div class="line">$ sess.<span class="keyword">close</span>()</div></pre></td></tr></table></figure></p>
+<p>这个时候会出来以下输出：</p>
+<h2 id="最终测试"><a href="#最终测试" class="headerlink" title="最终测试"></a>最终测试</h2><p>  进入tensorflow下目录跑一跑mnist_summaries.py，我的报出一个错：<br>  <code>Couldn&#39;t open CUDA library libcupti.so.7.5.</code><br>  查找相关资料需要将<code>libcupti.so.7.5.</code>所在文件目录<code>/usr/local/cuda/extras/CUPTI/lib64</code>加入到环境变量中，使用以下代码:<br>  <figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>cd ~</div><div class="line"><span class="variable">$ </span>gedit /.bashrc</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>打开该文件夹将以下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="string">"<span class="variable">$LD_LIBRARY_PATH</span>:/usr/local/cuda/lib64"</span></div><div class="line"><span class="built_in">export</span> CUDA_HOME=/usr/<span class="built_in">local</span>/cuda</div><div class="line"><span class="built_in">export</span> DYLD_LIBRARY_PATH=<span class="string">"<span class="variable">$DYLD_LIBRARY_PATH</span>:<span class="variable">$CUDA_HOME</span>/lib"</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$CUDA_HOME</span>/bin:<span class="variable">$PATH</span>"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>改为</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<ul>
+<li>完成编辑后保存文件，使用以下命令重新载入<code>.bashrc</code>文件：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">source</span> ~/.bashrc</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>再运行，就可以了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/" data-id="cj00um0jk0002pos78vlr7hxg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/08/几种目标检测特征描述器/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          几种目标检测特征描述器
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/07/Ubuntu showsocks chrome 配置说明/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Ubuntu下showsocks chrome 配置说明</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <a href="/" class="logo">黄海亮的博客</a>
+      &copy; 2017 Gavin-Huang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollLoading.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
