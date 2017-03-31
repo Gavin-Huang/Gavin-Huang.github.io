@@ -102,7 +102,7 @@
           </li>
         
           <li>
-            <a href="/2017/03/02/GDI+高速画图程序解析/">GDI+高速画图程序解析</a>
+            <a href="/2017/03/02/GDI+高速画图程序解析/">GDI+高速画图设计解析</a>
           </li>
         
           <li>
@@ -163,7 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/08/几种目标检测特征描述器/" data-id="cj00xywcf00040ws79t3ticn0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/08/几种目标检测特征描述器/" data-id="cj0xx2par0004dgs7fc1f5llm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -278,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/" data-id="cj00xywcf00050ws76yeuxeq3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/" data-id="cj0xx2pav0005dgs7d7uyhqya" class="article-share-link">Share</a>
       
       
     </footer>
@@ -347,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/Ubuntu showsocks chrome 配置说明/" data-id="cj00xywcf00020ws776a7c9t5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/06/Ubuntu showsocks chrome 配置说明/" data-id="cj0xx2pai0001dgs7ozypm863" class="article-share-link">Share</a>
       
       
     </footer>
@@ -371,7 +371,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/02/GDI+高速画图程序解析/">GDI+高速画图程序解析</a>
+      <a class="article-title" href="/2017/03/02/GDI+高速画图程序解析/">GDI+高速画图设计解析</a>
     </h1>
   
 
@@ -379,11 +379,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="GDI-高速画图设计解析"><a href="#GDI-高速画图设计解析" class="headerlink" title="GDI+高速画图设计解析"></a>GDI+高速画图设计解析</h1><p>  在做离线编程交互式编辑时需要使用GDI+高速画图显示大量焊点和模型，如果模块设计不是很好就会导致交互卡顿，刷新出现闪屏等问题。下面介绍一下我解决该问题的思路。</p>
+<h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><h3 id="GDI"><a href="#GDI" class="headerlink" title="GDI+"></a>GDI+</h3><p>  <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms533798.aspx" target="_blank" rel="external">GDI+</a>（Graphics Device Interface plus）是Windows中的一个子系统，它主要负责在显示屏幕和打印设备输出有关信息，它是一组通过C++类实现的应用程序编程接口。顾名思义，GDI+是以前版本GDI的继承者，出于兼容性考虑，Windows仍然支持以前版本的GDI，但是在开发新应用程序的时候，开发人员为了满足图形输出需要应该使用GDI+，因为GDI+对以前的Windows版本中GDI进行了优化，并添加了许多新的功能。<br>  我们使用GDI+接口进行界面绘图，GDI+使用Pen(画笔)、Path（路径）、Image(图像)、Font（字体）、笔刷（Grapthics）等类在画布上进行绘制点、线、矩形、多边形、圆等图形，GDI+还提供三维矩阵偏移、旋转、翻转等复杂计算。如果我们只需要完成二维图像交互程序，GDI+能完美满足我们的需求。</p>
+<h3 id="模块需求"><a href="#模块需求" class="headerlink" title="模块需求"></a>模块需求</h3><p>  我们需要开发一个能交互的电路板设计编辑器，具体来说，需要绘制出电路板图像（电路板可能有很多层，不同层叠加显示），用户能缩小放大电路板以显示宏观和细节（矢量绘制），用户能对电路板进行翻转、平移、旋转等整体操作，用户还能</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/02/GDI+高速画图程序解析/" data-id="cj00xywcf00010ws7y0qyt9rj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/02/GDI+高速画图程序解析/" data-id="cj0xx2pae0000dgs72chpkrjm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -436,7 +439,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/02/一道算法题的解题思路/" data-id="cj00xywcf00030ws7umqgbgkr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/02/一道算法题的解题思路/" data-id="cj0xx2pap0003dgs7yak1bxx4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -522,7 +525,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/02/SmartWinForm说明/" data-id="cj00xywbz00000ws7mtpd04ql" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/02/SmartWinForm说明/" data-id="cj0xx2pal0002dgs70kzodjzj" class="article-share-link">Share</a>
       
       
     </footer>
