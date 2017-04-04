@@ -187,13 +187,13 @@
         <p>it use the <a href="https://github.com/xmuSistone/android-animate-RichEditor">RichEditor</a> as editor control.it is a android  application which will keep personal password and image with security.<br>它使用<a href="https://github.com/xmuSistone/android-animate-RichEditor">RichEditor</a>作为编辑器控件。是一个Android应用程序，将保持个人密码和图像与安全。<br>它是离线的，不要求更多的权限，除了照片阅读导入图像和相机控制拍摄照片，最后的存储读写，这是基本上被大多数应用程序所要求的最低权限<br>
         
           <p class="article-more-link">
-            <a href="/2017/04/04/PasswordKeeper开源说明/#more">true</a>
+            <a href="/2017/04/04/PasswordKeeper开源说明/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/04/PasswordKeeper开源说明/" data-id="cj13q5m2k00040cw54zwhhv7q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/04/PasswordKeeper开源说明/" data-id="cj13qg1ta00009sw5z3dcsgtp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/密码保险箱/">密码保险箱</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/说明文档/">说明文档</a></li></ul>
@@ -231,90 +231,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="ubuntu14-04下GPU版tensorflow安装说明"><a href="#ubuntu14-04下GPU版tensorflow安装说明" class="headerlink" title="ubuntu14.04下GPU版tensorflow安装说明"></a>ubuntu14.04下GPU版tensorflow安装说明</h1><p> tensorflow目前是最热门的机器学习框架，当前做一个图像识别分类的项目需要用到这个框架，所以今天在自己的电脑上搭建这个框架，写一个博客记录一下安装过程</p>
-<h2 id="我的环境"><a href="#我的环境" class="headerlink" title="我的环境"></a>我的环境</h2><ul>
-<li>nvida 1060 6g 显卡</li>
-<li>ubuntu14.04</li>
-<li>cuda 7.5</li>
-<li>cudnn 5</li>
-<li>tensorflow 1.0.0 release</li>
-<li>python 2.7.6<ul>
-<li>显卡需要nvida <code>Compute capbility</code>&gt;3.0，这个<a href="https://developer.nvidia.com/cuda-gpus" target="_blank" rel="external">连接</a>查看显卡计算能力等级.</li>
-</ul>
-</li>
-</ul>
-<h2 id="安装必要的库"><a href="#安装必要的库" class="headerlink" title="安装必要的库"></a>安装必要的库</h2><ul>
-<li>可以使用<code>ctrl+shift+v</code>在命令行窗口粘贴命令，使用以下命令安装java8</li>
-</ul>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo <span class="built_in">add</span>-apt-repository <span class="keyword">pp</span><span class="variable">a:webupd8team</span>/java</div><div class="line">$ sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></div><div class="line">$ sudo apt-<span class="built_in">get</span> install oracle-java8-installer git <span class="keyword">python</span>-dev <span class="keyword">python3</span>-dev build-essential <span class="keyword">python</span>-pip <span class="keyword">python3</span>-pip <span class="keyword">python</span>-virtualenv swig <span class="keyword">python</span>-wheel libcurl3-dev</div></pre></td></tr></table></figure>
-<h2 id="安装Bazel"><a href="#安装Bazel" class="headerlink" title="安装Bazel"></a>安装Bazel</h2><ul>
-<li>因为我们使用的是在本地机器上编译tensorflow,所以需要装<a href="http://www.bazel.io/docs/install.html" target="_blank" rel="external">Bazel</a>，这是一种google开发并开源的自动化软件构建工具，tensorflow需要他来进行本地化编译。使用以下命令行进行安装：</li>
-</ul>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">echo</span> <span class="string">"deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8"</span> | sudo tee /etc/apt/sources.<span class="keyword">list</span>.d/bazel.<span class="keyword">list</span></div><div class="line">$ curl -<span class="keyword">k</span> http<span class="variable">s:</span>//storage.googleapis.<span class="keyword">com</span>/bazel-apt/doc/apt-key.pub.gpg | sudo apt-key <span class="built_in">add</span> -</div><div class="line">$ sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></div><div class="line">$ sudo apt-<span class="built_in">get</span> install bazel</div><div class="line">$ sudo apt-<span class="built_in">get</span> upgrade bazel</div></pre></td></tr></table></figure>
-<h2 id="下载和安装-Nvidia-cuda-7-5-以及-CudNN"><a href="#下载和安装-Nvidia-cuda-7-5-以及-CudNN" class="headerlink" title="下载和安装 Nvidia cuda 7.5 以及 CudNN"></a>下载和安装 Nvidia cuda 7.5 以及 CudNN</h2><h3 id="安装cuda7-5"><a href="#安装cuda7-5" class="headerlink" title="安装cuda7.5"></a>安装cuda7.5</h3><ul>
-<li>从<a href="https://developer.nvidia.com/cuda-75-downloads-archive" target="_blank" rel="external">nvida</a>官网上下载cuda7.5的<a href="http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb" target="_blank" rel="external">.deb</a>文件，需要注册和填写一下反馈表才能下载，使用以下命令行进行解压缩和安装：</li>
-</ul>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">cd</span> ~/Downloads # <span class="keyword">cd</span>到你下载cuda7.<span class="number">5</span>的地方</div><div class="line">$ sudo dpkg -i cuda-repo-ubuntu1404-<span class="number">7</span>-<span class="number">5</span>-local_7.<span class="number">5</span>-<span class="number">18</span>_amd64.<span class="keyword">deb</span></div><div class="line">$ sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></div><div class="line">$ sudo apt-<span class="built_in">get</span> install cuda</div></pre></td></tr></table></figure>
-<p>cuda将会安装到<code>/usr/local/cuda</code></p>
-<h3 id="安装cudNNv5-0"><a href="#安装cudNNv5-0" class="headerlink" title="安装cudNNv5.0"></a>安装cudNNv5.0</h3><ul>
-<li>下载<a href="https://developer.nvidia.com/cudnn" target="_blank" rel="external">CudNN</a>v5</li>
-<li>解压缩该文件并把头文件复制到指定目录：</li>
-</ul>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ tar xvzf cudnn-<span class="number">7.5</span>-linux-x64-v5.<span class="number">0</span>-ga.tgz</div><div class="line">$ sudo cp cuda<span class="regexp">/include/</span>cudnn.h <span class="regexp">/usr/</span>local<span class="regexp">/cuda/i</span>nclude</div><div class="line">$ sudo cp cuda<span class="regexp">/lib64/</span>libcudnn* <span class="regexp">/usr/</span>local<span class="regexp">/cuda/</span>lib64</div><div class="line">$ sudo chmod a+r <span class="regexp">/usr/</span>local<span class="regexp">/cuda/i</span>nclude<span class="regexp">/cudnn.h /u</span>sr<span class="regexp">/local/</span>cuda<span class="regexp">/lib64/</span>libcudnn*</div></pre></td></tr></table></figure>
-<h3 id="修改环境变量"><a href="#修改环境变量" class="headerlink" title="修改环境变量"></a>修改环境变量</h3><ul>
-<li><p>打开<code>.bashrc</code>文件</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>gedit ~<span class="regexp">/.bashrc</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>将以下代码粘贴到文件末尾将会使系统有cuda的环境变量：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="string">"<span class="variable">$LD_LIBRARY_PATH</span>:/usr/local/cuda/lib64"</span></div><div class="line"><span class="built_in">export</span> CUDA_HOME=/usr/<span class="built_in">local</span>/cuda</div><div class="line"><span class="built_in">export</span> DYLD_LIBRARY_PATH=<span class="string">"<span class="variable">$DYLD_LIBRARY_PATH</span>:<span class="variable">$CUDA_HOME</span>/lib"</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$CUDA_HOME</span>/bin:<span class="variable">$PATH</span>"</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>完成编辑后保存文件，使用以下命令重新载入<code>.bashrc</code>文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">source</span> ~/.bashrc</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="clone-tensorflow"><a href="#clone-tensorflow" class="headerlink" title="clone tensorflow"></a>clone tensorflow</h2><p>  直接下载指定版本的<a href="https://github.com/tensorflow/tensorflow/archive/v1.0.0.tar.gz" target="_blank" rel="external">tensorflow</a>，下载完成后将该文拷到用户目录：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cp ~/Downloads/tensorflow-<span class="number">1.0</span>.<span class="number">0</span>-rc2<span class="selector-class">.tar</span><span class="selector-class">.gz</span> ~/tensorflow-<span class="number">1.0</span>.<span class="number">0</span>-rc2<span class="selector-class">.tar</span><span class="selector-class">.gz</span>  #将该文件拷到用户目录下</div><div class="line">$ tar xvzf tensorflow-<span class="number">1.0</span>.<span class="number">0</span>-rc2<span class="selector-class">.tar</span><span class="selector-class">.gz</span> #解压缩该文件</div></pre></td></tr></table></figure></p>
-<h2 id="配置config"><a href="#配置config" class="headerlink" title="配置config"></a>配置config</h2><p>  cd进入到解压缩的目录，使用以下命令行开始进行config配置:<br>  <figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">$</span> cd ~/tensorflow</div><div class="line"><span class="symbol">$</span> ./configure</div></pre></td></tr></table></figure></p>
-<ul>
-<li>之后就是一路<code>y</code>或者enter除了以下几项：<ul>
-<li>是否开启openCL  <code>n</code>  不需要opencl,这个需要更多配置环境</li>
-<li><code>Please specify the Cuda SDK version you want to use, e.g. 7.0. [Leave empty to use system default]:</code>   填7.5</li>
-<li><code>Please specify the Cudnn version you want to use. [Leave empty to use system default]:</code> 填 5</li>
-</ul>
-</li>
-<li>可能会遇到的问题(划重点)：<ul>
-<li>问题一： 下载swig 出错：connection timeout 这个说明你的网络有问题，多试几次，试一下自己去访问swig的source url: <a href="http://bazel-mirror.storage.googleapis.com/ufpr.dl.sourceforge.net/project/swig/swig/swig-3.0.8/swig-3.0.8.tar.gz" target="_blank" rel="external">url1</a>、<a href="http://ufpr.dl.sourceforge.net/project/swig/swig/swig-3.0.8/swig-3.0.8.tar.gz" target="_blank" rel="external">url2</a>、<a href="http://pilotfiber.dl.sourceforge.net/project/swig/swig/swig-3.0.8/swig-3.0.8.tar.gz" target="_blank" rel="external">url3</a>看能访问么，不能访问就要解决网络问题了</li>
-<li>问题二： 下载swig后校验 出错：sha256 sum was xxxxxxxxxxxx but wanted xxxxxxxxx 这个说明下载的文件校验和tensorflow里面存的校验值不对应，cd进tensorflow源码文件夹具体路径是<code>tensorflow/tensorflow/workspace.bzl</code>,gedit他，在文件270行左右<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">native.new_http_archive(</div><div class="line">   <span class="attr">name</span> = <span class="string">"swig"</span>,</div><div class="line">   <span class="attr">sha256</span> = <span class="string">"58a475dbbd4a4d7075e5fe86d4e54c9edde39847cdb96a3053d87cb64a23a453"</span>,</div><div class="line">   <span class="attr">urls</span> = [</div><div class="line">       <span class="string">"http://bazel-mirror.storage.googleapis.com/ufpr.dl.sourceforge.net/project/swig/swig/swig-3.0.8/swig-3.0.8.tar.gz"</span>,</div><div class="line">       <span class="string">"http://ufpr.dl.sourceforge.net/project/swig/swig/swig-3.0.8/swig-3.0.8.tar.gz"</span>,</div><div class="line">       <span class="string">"http://pilotfiber.dl.sourceforge.net/project/swig/swig/swig-3.0.8/swig-3.0.8.tar.gz"</span>,</div><div class="line">   ],</div><div class="line">   <span class="attr">strip_prefix</span> = <span class="string">"swig-3.0.8"</span>,</div><div class="line">   <span class="attr">build_file</span> = str(Label(<span class="string">"//third_party:swig.BUILD"</span>)),</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<p>将sha256的值改成你当前校验值，然后保存后重新config运行。</p>
-<h2 id="编译tensorflow"><a href="#编译tensorflow" class="headerlink" title="编译tensorflow"></a>编译tensorflow</h2><p>  使用以下命令编译GPU版本的tensorflow:<br>  <figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">bazel </span><span class="keyword">build </span>-c <span class="meta">opt</span> --config<span class="symbol">=cuda</span> //tensorflow/tools/pip_package:<span class="keyword">build_pip_package</span></div></pre></td></tr></table></figure></p>
-<p>  可能会报出一大堆warnning,不要着急，不要惊慌，只要不是error就好<br>  我在这一步等了一个小时，编的很慢要耐心，但是没有出错，顺利完成</p>
-<h2 id="基本测试"><a href="#基本测试" class="headerlink" title="基本测试"></a>基本测试</h2><p> python 测试：<br> <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> $ <span class="keyword">python</span> # <span class="built_in">or</span> <span class="keyword">python3</span></div><div class="line">$ import tensorflow <span class="keyword">as</span> <span class="keyword">tf</span></div><div class="line">$ sess = <span class="keyword">tf</span>.InteractiveSession()</div><div class="line">$ sess.<span class="keyword">close</span>()</div></pre></td></tr></table></figure></p>
-<p>这个时候会出来以下输出：</p>
-<p><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_26_44.png" alt=""></p>
-<h2 id="最终测试"><a href="#最终测试" class="headerlink" title="最终测试"></a>最终测试</h2><p>  进入tensorflow下目录跑一跑mnist_with_summaries.py，具体目录为<code>~/tensorflow/tensorflow-1.0.0/tensorflow/examples/tutorials/mnist/</code>我的报出一个错：<br>  <code>Couldn&#39;t open CUDA library libcupti.so.7.5.</code><br>  查找相关资料需要将<code>libcupti.so.7.5.</code>所在文件目录<code>/usr/local/cuda/extras/CUPTI/lib64</code>加入到环境变量中，使用以下代码:<br>  <figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>cd ~</div><div class="line"><span class="variable">$ </span>gedit /.bashrc</div></pre></td></tr></table></figure></p>
-<ul>
-<li><p>打开该文件夹将以下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="string">"<span class="variable">$LD_LIBRARY_PATH</span>:/usr/local/cuda/lib64"</span></div><div class="line"><span class="built_in">export</span> CUDA_HOME=/usr/<span class="built_in">local</span>/cuda</div><div class="line"><span class="built_in">export</span> DYLD_LIBRARY_PATH=<span class="string">"<span class="variable">$DYLD_LIBRARY_PATH</span>:<span class="variable">$CUDA_HOME</span>/lib"</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$CUDA_HOME</span>/bin:<span class="variable">$PATH</span>"</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>改为</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> CUDA_HOME=/usr/<span class="built_in">local</span>/cuda</div><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$&#123;LD_LIBRARY_PATH&#125;</span>:/usr/<span class="built_in">local</span>/cuda/extras/CUPTI/lib64:/usr/<span class="built_in">local</span>/cuda/lib64</div><div class="line"><span class="built_in">export</span> DYLD_LIBRARY_PATH=<span class="string">"<span class="variable">$DYLD_LIBRARY_PATH</span>:<span class="variable">$CUDA_HOME</span>/lib"</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$CUDA_HOME</span>/bin:<span class="variable">$PATH</span>"</span></div></pre></td></tr></table></figure>
-<ul>
-<li>完成编辑后保存文件，使用以下命令重新载入<code>.bashrc</code>文件：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">source</span> ~/.bashrc</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<p>再运行，就可以了,以下是运行截图</p>
-<p><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_26_14.png" alt=""></p>
-<p><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_26_59.png" alt=""></p>
-
+        <p>本教程示例在ubuntu14.04 cuda7.5 cudnn5.0的环境下安装GPU版tensorflow<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/" data-id="cj13q5m2m00050cw5daxaxkfn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/" data-id="cj13qg1tv00069sw5vj9g4is3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tensorflow/">tensorflow</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安装说明/">安装说明</a></li></ul>
@@ -352,44 +278,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="在ubuntu下安装shadowsocks并且配置chrome"><a href="#在ubuntu下安装shadowsocks并且配置chrome" class="headerlink" title="在ubuntu下安装shadowsocks并且配置chrome"></a>在ubuntu下安装shadowsocks并且配置chrome</h3><ul>
-<li>因为要安装ubuntu环境下的tensorflow,需要连接一些外网的软件包，所以需要搭建翻墙shadowsocks,我搭建成功了，中途遇到很多坑，写下这篇教程来记录一下配置。<h2 id="安装chrome"><a href="#安装chrome" class="headerlink" title="安装chrome"></a>安装chrome</h2>使用<code>ctrl+alt+t</code>进入terminal</li>
-<li>将下载源加入到系统的源列表:<ul>
-<li><code>sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/</code></li>
-</ul>
-</li>
-<li>导入谷歌软件的公钥:<ul>
-<li><code>wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -</code></li>
-</ul>
-</li>
-<li>用于对当前系统的可用更新列表进行更新:<ul>
-<li><code>sudo apt-get update</code></li>
-</ul>
-</li>
-<li>谷歌 Chrome 浏览器（稳定版）的安装:<ul>
-<li><code>sudo apt-get install google-chrome-stable</code></li>
-</ul>
-</li>
-<li>启动chrome:<ul>
-<li><code>/usr/bin/google-chrome-stable</code><h2 id="安装shadowsocks-qt5"><a href="#安装shadowsocks-qt5" class="headerlink" title="安装shadowsocks-qt5"></a>安装shadowsocks-qt5</h2></li>
-</ul>
-</li>
-<li>安装好chrome后，再安装shadowsocks-qt5</li>
-<li>依次使用以下命令行：<ul>
-<li><code>sudo add-apt-repository ppa:hzwhuang/ss-qt5</code></li>
-<li><code>sudo apt-get update</code></li>
-<li><code>sudo apt-get install shadowsocks-qt5</code><h2 id="配置shadowsocks"><a href="#配置shadowsocks" class="headerlink" title="配置shadowsocks"></a>配置shadowsocks</h2></li>
-</ul>
-</li>
-<li>安装完成后在软件中心搜索<code>shadowsocks</code>就可以看到相关图标，点击图标就可以进行配置</li>
-<li>新建服务器，填写server地址、密码等参数，（重要：将连接类型设置为sock5才可以进行连接，将<code>debug</code>打开可以看到更详细的错误）</li>
-<li>完成后点击<code>connect</code>,查看日志，无报错说明配置良好<br><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_27_21.png" alt=""><h2 id="使用命令行启动chrome"><a href="#使用命令行启动chrome" class="headerlink" title="使用命令行启动chrome"></a>使用命令行启动chrome</h2>在terminal里使用<code>google-chrome --proxy-server=&quot;sock5://127.0.0.1:1080&quot;</code>命令行打开chrome,才可以上外网，这一步很重要！</li>
-</ul>
-
+        <p>本教程示例在ubuntu的环境下安装shadowsocks并且配置chrome<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/06/Ubuntu showsocks chrome 配置说明/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/Ubuntu showsocks chrome 配置说明/" data-id="cj13q5m2e00010cw5y1tnbmwv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/06/Ubuntu showsocks chrome 配置说明/" data-id="cj13qg1to00049sw57n6p1x02" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/">chrome</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowsocks-qt5/">shadowsocks-qt5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安装说明/">安装说明</a></li></ul>
@@ -427,61 +325,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="What-is-SmartWinForm"><a href="#What-is-SmartWinForm" class="headerlink" title="What is SmartWinForm?"></a>What is SmartWinForm?</h2><p><a href="https://github.com/Gavin-Huang/SmartWinform" target="_blank" rel="external">SmartWinForm</a> is an intelligent and easy to adapt touchscreen development Winform framework. This framework solves the problem of form display, input method pop-up, checkbox and radiobutton</p>
-<h2 id="What-are-the-features-of-SmartWinForm"><a href="#What-are-the-features-of-SmartWinForm" class="headerlink" title="What are the features of SmartWinForm?"></a>What are the features of SmartWinForm?</h2><ul>
-<li>Auto`s the long string of SmartListBox<ul>
-<li>Support loop display. NetBox ListBox does not display long strings</li>
-<li>Automatically start the loop and end the loop</li>
-</ul>
-</li>
-<li>Four directions parallel display window, do not block the mother window, to adapt to the touch screen development, you can always adjust the background color of all forms and foreground color</li>
-<li>You can use the method `OpenInputLabTip () to call the system input soft keyboard</li>
-<li>Use the methods <code>SmartForm.PublicbackColor</code> and<code>SmartForm.PublicforeColor</code> to make adjustments to foreground and background colors</li>
-<li>Larger and more beautiful radioButton and checkBox, suitable for touch screen use</li>
-<li>Automatic error logging: Use the <code>PrinftHelper.LogException (Exception gh)</code> method to automatically generate an error log in the specified folder</li>
-<li><code>IndicatorLight</code> can provide three color status indicators, and a blinking interface can be called</li>
-<li>More features waiting for development</li>
-</ul>
-<h2 id="have-feedback"><a href="#have-feedback" class="headerlink" title="have feedback"></a>have feedback</h2><p>In use there are any questions, please give me feedback, you can use the following contact with me</p>
-<ul>
-<li>Mail (huangwangyi16@163.com)</li>
-</ul>
-<h2 id="About-the-author"><a href="#About-the-author" class="headerlink" title="About the author"></a>About the author</h2><ul>
-<li>Huang Hai Liang</li>
-<li>Gavin-Huang</li>
-<li>Beihang Software College Pattern Recognition Laboratory</li>
-</ul>
-<h2 id="中文"><a href="#中文" class="headerlink" title="中文"></a>中文</h2><h2 id="SmartWinForm是什么"><a href="#SmartWinForm是什么" class="headerlink" title="SmartWinForm是什么?"></a>SmartWinForm是什么?</h2><p><a href="https://github.com/Gavin-Huang/SmartWinform" target="_blank" rel="external">SmartWinForm</a> 是一个智能方便适应触摸屏开发Winform框架。本框架解决了窗体显示，输入法弹窗，checkbox和radiobutton等问题</p>
-<h2 id="SmartWinForm有哪些功能？"><a href="#SmartWinForm有哪些功能？" class="headerlink" title="SmartWinForm有哪些功能？"></a>SmartWinForm有哪些功能？</h2><ul>
-<li>自动<code>循环长字符串</code>的SmartListBox<ul>
-<li>支持循环展示.net框架的ListBox不显示长的字符串</li>
-<li>自动开始循环和结束循环</li>
-</ul>
-</li>
-<li>四方向并列显示窗口，不遮挡母窗口，适应触摸屏开发,可以随时调整所有窗体的背景色和前景色<ul>
-<li>可以使用方法 <code>OpenInputLabTip()</code>调用系统输入软键盘</li>
-<li>使用方法<code>SmartForm.PublicbackColor</code>和<code>SmartForm.PublicforeColor</code>来进行前景色和后景色的调整</li>
-</ul>
-</li>
-<li>更大更漂亮的radioButton和checkBox，适合触摸屏使用</li>
-<li>自动错误日志记录：使用<code>PrinftHelper.LogException(Exception gh)</code>方法可以自动在指定文件夹产生错误记录日志</li>
-<li><code>IndicatorLight</code>可以提供三种颜色的状态指示，并且有闪烁接口可以调用</li>
-<li>更多功能等待开发</li>
-</ul>
-<h2 id="有问题反馈"><a href="#有问题反馈" class="headerlink" title="有问题反馈"></a>有问题反馈</h2><p>在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流</p>
-<ul>
-<li>邮件(huangwangyi16@163.com)</li>
-</ul>
-<h2 id="关于作者"><a href="#关于作者" class="headerlink" title="关于作者"></a>关于作者</h2><ul>
-<li>黄海亮</li>
-<li>Gavin-Huang</li>
-<li>北航软件学院模式识别实验室</li>
-</ul>
-
+        <p><a href="https://github.com/Gavin-Huang/SmartWinform">SmartWinForm</a> is an intelligent and easy to adapt touchscreen development Winform framework. This framework solves the problem of form display, input method pop-up, checkbox and radiobutton<br><a href="https://github.com/Gavin-Huang/SmartWinform">SmartWinForm</a> 是一个智能方便适应触摸屏开发Winform框架。本框架解决了窗体显示，输入法弹窗，checkbox和radiobutton等问题<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/03/SmartWinForm说明/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/SmartWinForm说明/" data-id="cj13q5m2a00000cw5yygmhjnr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/SmartWinForm说明/" data-id="cj13qg1tq00059sw5h5mrp0wc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WinForm/">WinForm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
@@ -519,28 +372,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><ul>
-<li>方程<code>g(x,y)=（x^2+y^2-1)^2-x^2*y^2，g(x,y)=0</code>方程  能画出一个美丽的爱心，现在给定一个点（X，Y），其中 X、Y分别属于N(μ1，σ1^2)、N(μ1，σ1^2)的正态分布， 那么这个点在这个爱心里面的概率是多少，精确到0.1（小数点后保留1位有效数，比如0.1, 0.2等）<h3 id="思路解析"><a href="#思路解析" class="headerlink" title="思路解析"></a>思路解析</h3></li>
-<li>当时看到这个题目是一脸懵逼的，没见过这样纯数学的题目，我开始想着用数学的方法，用联合概率密度在方程所围成的图形里积分，算了一下，这个得积二元积分，先积x再积y,光算x用y来表示界限就不得了，关键图像关于y=x对称，而且xy都以平方为基元，交点有4个–||.</li>
-<li>硬算肯定是不行的，和同学讨论，得到一种完全全新的思路，可以在用程序去逼近求解，在(x,y,x+deltaX，y+deltaX)的矩形区域内，以联合概率密度 <code>f(x,u1,σ1) * f(y,u2,σ2)</code> 作为其概率密度，然后硬积分出在图形内的总的概率。</li>
-<li>那么现在的问题就是如何确定（x,y）是否在方程<code>（x^2+y^2-1)^2-x^2*y^2=0</code>所围成的图形内。首先得知道这个图形大致样子，MathLab是个好东西，画函数图像非常好用。</li>
-<li>在mathlab的命令行中使用 <code>ezplot(&#39;(x^2+y^2-1)^2-x^2*y^2=0&#39;)</code></li>
-</ul>
-<p><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/MathLab1.PNG" alt=""></p>
-<ul>
-<li>使用<code>grid on</code>命令显示网格方便看交点位置</li>
-</ul>
-<p><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/MathLab2.PNG" alt=""></p>
-<ul>
-<li>一般来说，f(x，y)&gt;0，（x,y）肯定在外面，小于零肯定在里面，但是这个函数是以x^2和y^2为基元，其最高为4次方，所以这种判断方法是不够准确的，我们经过测试可以知道在内心的和外边的点使f(x，y)&gt;0，在四个花瓣里的点使得f(x，y)&lt;0.这里要直接判断是否在圆心里也是十分困难的。经过观察，在其四个交点所围成的矩形里肯定就是在里面的，验证一下：（1，1）代入到g(x,y)是等于0的说明（1,1）刚好在其图像的花瓣上，说明以[（-1,1）,（1,1）,（1,-1）,（-1,-1）]围成的矩形都在g(x,y)=0所围成的图形内。</li>
-<li>于是编码如下</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdafx.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"iostream"</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;numeric&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;limits&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> _USE_MATH_DEFINES</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> EulerConstant = <span class="built_in">std</span>::<span class="built_in">exp</span>(<span class="number">1.0</span>);</div><div class="line"><span class="comment">//求概率密度</span></div><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">double</span> <span class="title">GetDelta</span><span class="params">(<span class="keyword">long</span> <span class="keyword">double</span> x,<span class="keyword">long</span> <span class="keyword">double</span> miu ,<span class="keyword">long</span> <span class="keyword">double</span> seta,<span class="keyword">long</span> <span class="keyword">double</span> PI)</span></span></div><div class="line">&#123;  </div><div class="line">	<span class="keyword">return</span>    <span class="built_in">exp</span>(-<span class="built_in">pow</span>((x-miu),<span class="number">2.0</span>)/(<span class="number">2.0</span>*<span class="built_in">pow</span>(seta,<span class="number">2.0</span>)))/(<span class="built_in">sqrt</span>(<span class="number">2.0</span>*PI)*seta);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsIn</span><span class="params">(<span class="keyword">long</span> <span class="keyword">double</span> x,<span class="keyword">long</span> <span class="keyword">double</span> y,<span class="keyword">long</span> <span class="keyword">double</span> P)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>(x&gt;=-P&amp;&amp;x&lt;=P&amp;&amp;y&gt;=-P&amp;&amp;y&lt;=P)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>(<span class="built_in">pow</span>((x*x+y*y<span class="number">-1</span>),<span class="number">2</span>)-x*x*y*y&gt;<span class="number">0</span>)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//long double GetDelta(long double x,long double miu ,long double seta,long double PI)</span></div><div class="line"><span class="comment">//bool IsOut(double x,double y,double P);</span></div><div class="line"><span class="comment">//#ifndef Pi#</span></div><div class="line"><span class="comment">//#define Pi 3.141592674</span></div><div class="line"><span class="comment">//#endif // !Pi</span></div><div class="line"></div><div class="line"><span class="comment">/** 请完成下面这个函数，实现题目要求的功能 **/</span></div><div class="line"> <span class="comment">/** 当然，你也可以不按照这个模板来作答，完全按照自己的想法来 ^-^  **/</span></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">leartCurve</span><span class="params">(<span class="keyword">long</span> <span class="keyword">double</span> mu1,<span class="keyword">long</span> <span class="keyword">double</span> sigma1,<span class="keyword">long</span> <span class="keyword">double</span> mu2,<span class="keyword">long</span> <span class="keyword">double</span> sigma2)</span></span></div><div class="line">&#123;   </div><div class="line">	<span class="keyword">long</span> <span class="keyword">double</span> Pi=  <span class="built_in">atan</span>(<span class="number">1</span>)*<span class="number">4</span>;<span class="comment">//比较委婉的求pi方法</span></div><div class="line">	<span class="keyword">long</span> <span class="keyword">double</span> deltaX =<span class="number">0.005</span>;</div><div class="line">	<span class="keyword">long</span> <span class="keyword">double</span> x=<span class="number">-2</span>,y=<span class="number">-2</span>;</div><div class="line">	<span class="keyword">long</span> <span class="keyword">double</span> result=<span class="number">0</span>;</div><div class="line">	<span class="keyword">long</span> <span class="keyword">double</span> P=<span class="number">1.0</span>;</div><div class="line">	<span class="keyword">while</span> (y&lt;<span class="number">2</span>)</div><div class="line">	&#123;</div><div class="line">		x=<span class="number">-2</span>;</div><div class="line">		<span class="keyword">while</span> (x&lt;<span class="number">2</span>)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span>(IsIn(x,y,P))</div><div class="line">			&#123;</div><div class="line">				result+=GetDelta(x,mu1,sigma1,Pi)*GetDelta(y,mu2,sigma2,Pi)*deltaX*deltaX;</div><div class="line">			&#125;</div><div class="line">			x+=deltaX;</div><div class="line">		&#125;</div><div class="line">		y+=deltaX;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> result;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">int</span> _tmain(<span class="keyword">int</span> argc, _TCHAR* argv[])</div><div class="line">&#123;</div><div class="line">	<span class="keyword">double</span> res;</div><div class="line"></div><div class="line">    <span class="keyword">double</span> _mu1;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; _mu1;</div><div class="line">    <span class="built_in">cin</span>.ignore (<span class="built_in">std</span>::numeric_limits&lt;<span class="built_in">std</span>::streamsize&gt;::max(), <span class="string">'\n'</span>);</div><div class="line"></div><div class="line">    <span class="keyword">double</span> _sigma1;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; _sigma1;</div><div class="line">    <span class="built_in">cin</span>.ignore (<span class="built_in">std</span>::numeric_limits&lt;<span class="built_in">std</span>::streamsize&gt;::max(), <span class="string">'\n'</span>);</div><div class="line"></div><div class="line">    <span class="keyword">double</span> _mu2;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; _mu2;</div><div class="line">    <span class="built_in">cin</span>.ignore (<span class="built_in">std</span>::numeric_limits&lt;<span class="built_in">std</span>::streamsize&gt;::max(), <span class="string">'\n'</span>);</div><div class="line"></div><div class="line">    <span class="keyword">double</span> _sigma2;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; _sigma2;</div><div class="line">    <span class="built_in">cin</span>.ignore (<span class="built_in">std</span>::numeric_limits&lt;<span class="built_in">std</span>::streamsize&gt;::max(), <span class="string">'\n'</span>);</div><div class="line"></div><div class="line"></div><div class="line">    res = leartCurve(_mu1, _sigma1, _mu2, _sigma2);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	system(<span class="string">"pause"</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        <p>介绍了一种解决联合概率密度积分的算法题<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/02/一道算法题的解题思路/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/02/一道算法题的解题思路/" data-id="cj13q5m2r00060cw5ql1azdt2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/02/一道算法题的解题思路/" data-id="cj13qg1tf00019sw57okax51c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/积分/">积分</a></li></ul>
