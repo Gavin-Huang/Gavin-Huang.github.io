@@ -3,29 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Ubuntu下showsocks chrome 配置说明 | 黄海亮的博客</title>
+  <title>ubuntu14.04下GPU版tensorflow安装说明 | 黄海亮的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在ubuntu下安装shadowsocks并且配置chrome
-因为要安装ubuntu环境下的tensorflow,需要连接一些外网的软件包，所以需要搭建翻墙shadowsocks,我搭建成功了，中途遇到很多坑，写下这篇教程来记录一下配置。安装chrome使用ctrl+alt+t进入terminal
-将下载源加入到系统的源列表:
-sudo wget http://www.linuxidc.com/">
+  <meta name="description" content="PasswordKeeperit use the RichEditor as editor control.it is a android  application which will keep personal password and image with security.it is off-line and ask no more permisssion except photo rea">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu下showsocks chrome 配置说明">
-<meta property="og:url" content="http://yoursite.com/2017/03/06/Ubuntu showsocks chrome 配置说明/index.html">
+<meta property="og:title" content="ubuntu14.04下GPU版tensorflow安装说明">
+<meta property="og:url" content="http://yoursite.com/2017/04/04/PasswordKeeper开源说明/index.html">
 <meta property="og:site_name" content="黄海亮的博客">
-<meta property="og:description" content="在ubuntu下安装shadowsocks并且配置chrome
-因为要安装ubuntu环境下的tensorflow,需要连接一些外网的软件包，所以需要搭建翻墙shadowsocks,我搭建成功了，中途遇到很多坑，写下这篇教程来记录一下配置。安装chrome使用ctrl+alt+t进入terminal
-将下载源加入到系统的源列表:
-sudo wget http://www.linuxidc.com/">
-<meta property="og:image" content="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_27_21.png">
-<meta property="og:updated_time" content="2017-04-04T07:27:48.000Z">
+<meta property="og:description" content="PasswordKeeperit use the RichEditor as editor control.it is a android  application which will keep personal password and image with security.it is off-line and ask no more permisssion except photo rea">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/passwordkeeper1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/passwordkeeper2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/passwordkeeper3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/passwordkeeper1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/passwordkeeper2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/passwordkeeper3.png">
+<meta property="og:updated_time" content="2017-04-04T07:29:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu下showsocks chrome 配置说明">
-<meta name="twitter:description" content="在ubuntu下安装shadowsocks并且配置chrome
-因为要安装ubuntu环境下的tensorflow,需要连接一些外网的软件包，所以需要搭建翻墙shadowsocks,我搭建成功了，中途遇到很多坑，写下这篇教程来记录一下配置。安装chrome使用ctrl+alt+t进入terminal
-将下载源加入到系统的源列表:
-sudo wget http://www.linuxidc.com/">
-<meta name="twitter:image" content="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_27_21.png">
+<meta name="twitter:title" content="ubuntu14.04下GPU版tensorflow安装说明">
+<meta name="twitter:description" content="PasswordKeeperit use the RichEditor as editor control.it is a android  application which will keep personal password and image with security.it is off-line and ask no more permisssion except photo rea">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/passwordkeeper1.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -168,14 +164,14 @@ sudo wget http://www.linuxidc.com/">
   
 </aside>
         
-        <section id="main"><article id="post-Ubuntu showsocks chrome 配置说明" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-PasswordKeeper开源说明" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/03/06/Ubuntu showsocks chrome 配置说明/" class="article-date">
-  <time datetime="2017-03-06T02:17:23.000Z" itemprop="datePublished">2017-03-06</time>
+    <a href="/2017/04/04/PasswordKeeper开源说明/" class="article-date">
+  <time datetime="2017-04-04T07:17:23.000Z" itemprop="datePublished">2017-04-04</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/others/">其他</a>
+    <a class="article-category-link" href="/categories/project/">项目</a>
   </div>
 
   </div>
@@ -186,7 +182,7 @@ sudo wget http://www.linuxidc.com/">
         
   
     <h1 class="article-title" itemprop="name">
-      Ubuntu下showsocks chrome 配置说明
+      ubuntu14.04下GPU版tensorflow安装说明
     </h1>
   
 
@@ -194,47 +190,34 @@ sudo wget http://www.linuxidc.com/">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="在ubuntu下安装shadowsocks并且配置chrome"><a href="#在ubuntu下安装shadowsocks并且配置chrome" class="headerlink" title="在ubuntu下安装shadowsocks并且配置chrome"></a>在ubuntu下安装shadowsocks并且配置chrome</h3><ul>
-<li>因为要安装ubuntu环境下的tensorflow,需要连接一些外网的软件包，所以需要搭建翻墙shadowsocks,我搭建成功了，中途遇到很多坑，写下这篇教程来记录一下配置。<h2 id="安装chrome"><a href="#安装chrome" class="headerlink" title="安装chrome"></a>安装chrome</h2>使用<code>ctrl+alt+t</code>进入terminal</li>
-<li>将下载源加入到系统的源列表:<ul>
-<li><code>sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/</code></li>
+        <h1 id="PasswordKeeper"><a href="#PasswordKeeper" class="headerlink" title="PasswordKeeper"></a>PasswordKeeper</h1><p>it use the <a href="https://github.com/xmuSistone/android-animate-RichEditor" target="_blank" rel="external">RichEditor</a> as editor control.it is a android  application which will keep personal password and image with security.<br>it is off-line and ask no more permisssion except photo reading for import image and camrera control to take the assencial photo ,last the storage read and write which is basically asked by most apps</p>
+<h2 id="install-and-fisrt-use"><a href="#install-and-fisrt-use" class="headerlink" title="install and fisrt use"></a>install and fisrt use</h2><p>firstly openning this app will be asked to set password which should remenberdered clearly and staindly,because once you forgot it you would have no way to find out all you password and secure image you had saved.</p>
+<h2 id="normally-use"><a href="#normally-use" class="headerlink" title="normally use"></a>normally use</h2><p>you can enter your password ,regist website and associated email or phone number which mostly people will forget in some day.so this is very easy to use and understand app.</p>
+<h3 id="login"><a href="#login" class="headerlink" title="login"></a>login</h3><p><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/passwordkeeper1.png" alt="mahua"><br>enter your password and press login button,<code>forget password</code> button will make you reset your password but also make you lost your all secure notes</p>
+<h3 id="secure-note-list"><a href="#secure-note-list" class="headerlink" title="secure note list"></a>secure note list</h3><p><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/passwordkeeper2.png" alt="mahua"><br>pick one note to edit or press new note button to insert</p>
+<h3 id="insert-edit-note"><a href="#insert-edit-note" class="headerlink" title="insert,edit note"></a>insert,edit note</h3><p><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/passwordkeeper3.png" alt="mahua"><br>in this view,you can change the node title and its contant,you can insert photo and take picture,taking picture will not be saved in photo album</p>
+<h2 id="About-the-author"><a href="#About-the-author" class="headerlink" title="About the author"></a>About the author</h2><ul>
+<li>Huang Hai Liang</li>
+<li>Gavin-Huang</li>
+<li>Beihang University,Software College,Pattern Recognition and Image Processing Laboratory</li>
 </ul>
-</li>
-<li>导入谷歌软件的公钥:<ul>
-<li><code>wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -</code></li>
-</ul>
-</li>
-<li>用于对当前系统的可用更新列表进行更新:<ul>
-<li><code>sudo apt-get update</code></li>
-</ul>
-</li>
-<li>谷歌 Chrome 浏览器（稳定版）的安装:<ul>
-<li><code>sudo apt-get install google-chrome-stable</code></li>
-</ul>
-</li>
-<li>启动chrome:<ul>
-<li><code>/usr/bin/google-chrome-stable</code><h2 id="安装shadowsocks-qt5"><a href="#安装shadowsocks-qt5" class="headerlink" title="安装shadowsocks-qt5"></a>安装shadowsocks-qt5</h2></li>
-</ul>
-</li>
-<li>安装好chrome后，再安装shadowsocks-qt5</li>
-<li>依次使用以下命令行：<ul>
-<li><code>sudo add-apt-repository ppa:hzwhuang/ss-qt5</code></li>
-<li><code>sudo apt-get update</code></li>
-<li><code>sudo apt-get install shadowsocks-qt5</code><h2 id="配置shadowsocks"><a href="#配置shadowsocks" class="headerlink" title="配置shadowsocks"></a>配置shadowsocks</h2></li>
-</ul>
-</li>
-<li>安装完成后在软件中心搜索<code>shadowsocks</code>就可以看到相关图标，点击图标就可以进行配置</li>
-<li>新建服务器，填写server地址、密码等参数，（重要：将连接类型设置为sock5才可以进行连接，将<code>debug</code>打开可以看到更详细的错误）</li>
-<li>完成后点击<code>connect</code>,查看日志，无报错说明配置良好<br><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_27_21.png" alt=""><h2 id="使用命令行启动chrome"><a href="#使用命令行启动chrome" class="headerlink" title="使用命令行启动chrome"></a>使用命令行启动chrome</h2>在terminal里使用<code>google-chrome --proxy-server=&quot;sock5://127.0.0.1:1080&quot;</code>命令行打开chrome,才可以上外网，这一步很重要！</li>
+<h1 id="PasswordKeeper-密码笔记本"><a href="#PasswordKeeper-密码笔记本" class="headerlink" title="PasswordKeeper(密码笔记本)"></a>PasswordKeeper(密码笔记本)</h1><p>它使用<a href="https://github.com/xmuSistone/android-animate-RichEditor" target="_blank" rel="external">RichEditor</a>作为编辑器控件。是一个Android应用程序，将保持个人密码和图像与安全。<br>它是离线的，不要求更多的权限，除了照片阅读导入图像和相机控制拍摄照片，最后的存储读写，这是基本上被大多数应用程序所要求的最低权限</p>
+<h2 id="安装和fisrt使用"><a href="#安装和fisrt使用" class="headerlink" title="安装和fisrt使用"></a>安装和fisrt使用</h2><p>首先打开这个应用程序将被要求设置密码，尽量要你能一直记住的密码，因为一旦你忘了它，你将无法找到你保存的所有密码和图像。</p>
+<h2 id="通常使用"><a href="#通常使用" class="headerlink" title="通常使用"></a>通常使用</h2><p>您可以输入您的密码，所注册的网站以及相关的电子邮件或电话号码，这些东西纷繁复杂绝大多数人将在某一天忘记。这是非常容易使用和理解的应用程序。<br>＃＃＃登录<br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/passwordkeeper1.png" alt="mahua"><br>输入您的密码，然后按登录按钮，“忘记密码”按钮将使您重置密码，但也会丢失所有安全笔记</p>
+<h3 id="安全笔记列表"><a href="#安全笔记列表" class="headerlink" title="安全笔记列表"></a>安全笔记列表</h3><p><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/passwordkeeper2.png" alt="mahua"><br>选择一个条目进行编辑或按新建按钮插入</p>
+<h3 id="插入，编辑笔记"><a href="#插入，编辑笔记" class="headerlink" title="插入，编辑笔记"></a>插入，编辑笔记</h3><p><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/passwordkeeper3.png" alt="mahua"><br>在这种观点下，您可以更改节点标题及其连接，可以插入照片并拍照，拍照不会保存在相册中</p>
+<h2 id="关于作者"><a href="#关于作者" class="headerlink" title="关于作者"></a>关于作者</h2><ul>
+<li>黄海亮</li>
+<li>北大航空航天大学软件学院，模式识别与图像处理实验室</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/Ubuntu showsocks chrome 配置说明/" data-id="cj1386z0e0005r0w5rl4s1y7a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/04/PasswordKeeper开源说明/" data-id="cj1386yzy0001r0w5hsxegj9n" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/">chrome</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowsocks-qt5/">shadowsocks-qt5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安装说明/">安装说明</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/密码保险箱/">密码保险箱</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/说明文档/">说明文档</a></li></ul>
 
     </footer>
   </div>
@@ -242,19 +225,10 @@ sudo wget http://www.linuxidc.com/">
     
 <nav id="article-nav">
   
-    <a href="/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ubuntu14.04下GPU版tensorflow安装说明
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/03/SmartWinForm说明/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">SmartWinForm说明</div>
+      <div class="article-nav-title">ubuntu14.04下GPU版tensorflow安装说明</div>
     </a>
   
 </nav>

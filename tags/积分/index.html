@@ -3,29 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Ubuntu下showsocks chrome 配置说明 | 黄海亮的博客</title>
+  <title>Tag: 积分 | 黄海亮的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在ubuntu下安装shadowsocks并且配置chrome
-因为要安装ubuntu环境下的tensorflow,需要连接一些外网的软件包，所以需要搭建翻墙shadowsocks,我搭建成功了，中途遇到很多坑，写下这篇教程来记录一下配置。安装chrome使用ctrl+alt+t进入terminal
-将下载源加入到系统的源列表:
-sudo wget http://www.linuxidc.com/">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu下showsocks chrome 配置说明">
-<meta property="og:url" content="http://yoursite.com/2017/03/06/Ubuntu showsocks chrome 配置说明/index.html">
+  <meta name="description" content="程序员的世界">
+<meta property="og:type" content="website">
+<meta property="og:title" content="黄海亮的博客">
+<meta property="og:url" content="http://yoursite.com/tags/积分/index.html">
 <meta property="og:site_name" content="黄海亮的博客">
-<meta property="og:description" content="在ubuntu下安装shadowsocks并且配置chrome
-因为要安装ubuntu环境下的tensorflow,需要连接一些外网的软件包，所以需要搭建翻墙shadowsocks,我搭建成功了，中途遇到很多坑，写下这篇教程来记录一下配置。安装chrome使用ctrl+alt+t进入terminal
-将下载源加入到系统的源列表:
-sudo wget http://www.linuxidc.com/">
-<meta property="og:image" content="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_27_21.png">
-<meta property="og:updated_time" content="2017-04-04T07:27:48.000Z">
+<meta property="og:description" content="程序员的世界">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu下showsocks chrome 配置说明">
-<meta name="twitter:description" content="在ubuntu下安装shadowsocks并且配置chrome
-因为要安装ubuntu环境下的tensorflow,需要连接一些外网的软件包，所以需要搭建翻墙shadowsocks,我搭建成功了，中途遇到很多坑，写下这篇教程来记录一下配置。安装chrome使用ctrl+alt+t进入terminal
-将下载源加入到系统的源列表:
-sudo wget http://www.linuxidc.com/">
-<meta name="twitter:image" content="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_27_21.png">
+<meta name="twitter:title" content="黄海亮的博客">
+<meta name="twitter:description" content="程序员的世界">
   
   
     <link rel="icon" href="/favicon.png">
@@ -168,99 +156,39 @@ sudo wget http://www.linuxidc.com/">
   
 </aside>
         
-        <section id="main"><article id="post-Ubuntu showsocks chrome 配置说明" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/06/Ubuntu showsocks chrome 配置说明/" class="article-date">
-  <time datetime="2017-03-06T02:17:23.000Z" itemprop="datePublished">2017-03-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/others/">其他</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      Ubuntu下showsocks chrome 配置说明
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2017/03/02/一道算法题的解题思路/" class="archive-article-date">
+  <time datetime="2017-03-02T07:07:43.000Z" itemprop="datePublished">3月 2</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/03/02/一道算法题的解题思路/">一道算法题的解题思路</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="在ubuntu下安装shadowsocks并且配置chrome"><a href="#在ubuntu下安装shadowsocks并且配置chrome" class="headerlink" title="在ubuntu下安装shadowsocks并且配置chrome"></a>在ubuntu下安装shadowsocks并且配置chrome</h3><ul>
-<li>因为要安装ubuntu环境下的tensorflow,需要连接一些外网的软件包，所以需要搭建翻墙shadowsocks,我搭建成功了，中途遇到很多坑，写下这篇教程来记录一下配置。<h2 id="安装chrome"><a href="#安装chrome" class="headerlink" title="安装chrome"></a>安装chrome</h2>使用<code>ctrl+alt+t</code>进入terminal</li>
-<li>将下载源加入到系统的源列表:<ul>
-<li><code>sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/</code></li>
-</ul>
-</li>
-<li>导入谷歌软件的公钥:<ul>
-<li><code>wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -</code></li>
-</ul>
-</li>
-<li>用于对当前系统的可用更新列表进行更新:<ul>
-<li><code>sudo apt-get update</code></li>
-</ul>
-</li>
-<li>谷歌 Chrome 浏览器（稳定版）的安装:<ul>
-<li><code>sudo apt-get install google-chrome-stable</code></li>
-</ul>
-</li>
-<li>启动chrome:<ul>
-<li><code>/usr/bin/google-chrome-stable</code><h2 id="安装shadowsocks-qt5"><a href="#安装shadowsocks-qt5" class="headerlink" title="安装shadowsocks-qt5"></a>安装shadowsocks-qt5</h2></li>
-</ul>
-</li>
-<li>安装好chrome后，再安装shadowsocks-qt5</li>
-<li>依次使用以下命令行：<ul>
-<li><code>sudo add-apt-repository ppa:hzwhuang/ss-qt5</code></li>
-<li><code>sudo apt-get update</code></li>
-<li><code>sudo apt-get install shadowsocks-qt5</code><h2 id="配置shadowsocks"><a href="#配置shadowsocks" class="headerlink" title="配置shadowsocks"></a>配置shadowsocks</h2></li>
-</ul>
-</li>
-<li>安装完成后在软件中心搜索<code>shadowsocks</code>就可以看到相关图标，点击图标就可以进行配置</li>
-<li>新建服务器，填写server地址、密码等参数，（重要：将连接类型设置为sock5才可以进行连接，将<code>debug</code>打开可以看到更详细的错误）</li>
-<li>完成后点击<code>connect</code>,查看日志，无报错说明配置良好<br><img src="https://github.com/Gavin-Huang/myMarkdownPics/raw/master/res/Screenshot from 2017-03-08 19_27_21.png" alt=""><h2 id="使用命令行启动chrome"><a href="#使用命令行启动chrome" class="headerlink" title="使用命令行启动chrome"></a>使用命令行启动chrome</h2>在terminal里使用<code>google-chrome --proxy-server=&quot;sock5://127.0.0.1:1080&quot;</code>命令行打开chrome,才可以上外网，这一步很重要！</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/Ubuntu showsocks chrome 配置说明/" data-id="cj1386z0e0005r0w5rl4s1y7a" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/">chrome</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowsocks-qt5/">shadowsocks-qt5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安装说明/">安装说明</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ubuntu14.04下GPU版tensorflow安装说明
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/03/03/SmartWinForm说明/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">SmartWinForm说明</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
 </section>
       </div>
