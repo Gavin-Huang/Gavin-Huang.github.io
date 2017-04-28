@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ObjectDetectionIResult.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/KeyPointTResult.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/KeyPointIResult.png">
-<meta property="og:updated_time" content="2017-04-28T06:59:22.000Z">
+<meta property="og:updated_time" content="2017-04-28T07:01:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mask R-CNN 阅读笔记">
 <meta name="twitter:description" content="阅读何凯明最新CVPR 2017《Mask R-CNN》文章所做的笔记，重点讲解了其背景、网络结构、ROIAlign、实现的效果。">
@@ -231,7 +231,7 @@
 <li><p>动态演示<br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/roi_pooling-1.gif" alt="ROI Pooling 动态演示"></p>
 <h3 id="ROI-Align-1"><a href="#ROI-Align-1" class="headerlink" title="ROI Align"></a>ROI Align</h3><p>关于<code>ROI Align</code>的作者的原话为：   </p>
 <blockquote>
-<p>To address this, we propose an RoIAlign layer that re- moves the harsh quantization of RoIPool, properly aligning the extracted features with the input. Our proposed change is simple: we avoid any quantization of the RoI boundaries orbins(i.e., weusex/16insteadof[x/16]). We use bilinear interpolation [22] to compute the exact values of the input<br>features at four regularly sampled locations in each RoI bin, and aggregate the result (using max or average).</p>
+<p>To address this, we propose an RoIAlign layer that re- moves the harsh quantization of RoIPool, properly aligning the extracted features with the input. Our proposed change is simple: we avoid any quantization of the RoI boundaries orbins(i.e.,weusex/16insteadof[x/16]). We use bilinear interpolation [22] to compute the exact values of the input features at four regularly sampled locations in each RoI bin, and aggregate the result (using max or average).</p>
 </blockquote>
 <p>在<code>ROI Pooling</code>处理过程中很明显地一个问题就是区域划分的不均衡，特征在pooling的过程中其实是发生了特征表达的位置变化，这种变化对于完成实例分割的mask branch会产生巨大地影响，因为实例分割是针对每个像素的分割，如果在pooling的过程中发生了偏移，那么反卷积过程中mask就会不准。<br>针对这个问题，作者提出了ROI Align的方法，这种方法采用：</p>
 </li>
@@ -244,7 +244,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gavin-huang.github.io/archives/2017/04/22/Mask R-CNN 阅读笔记/" data-id="cj21hmu98000bi4s7skg35rwi" class="article-share-link">Share</a>
+      <a data-url="https://gavin-huang.github.io/archives/2017/04/22/Mask R-CNN 阅读笔记/" data-id="cj21hq3f5000bsks7olcj6lok" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kaiming-He/">Kaiming He</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R-CNN/">R-CNN</a></li></ul>
