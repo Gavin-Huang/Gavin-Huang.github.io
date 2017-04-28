@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>黄海亮的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: Mask R-CNN 阅读笔记date: 2017-04-22 16:07:43tags: [Kaiming He,R-CNN]
+categories: 机器学习  阅读何凯明最新CVPR 2017《Mask R-CNN》文章所做的笔记，重点讲解了其背景、网络结构、ROIAlign、实现的效果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黄海亮的博客">
+<meta property="og:url" content="https://gavin-huang.github.io/archives/2017/04/28/Mask R-CNN 阅读笔记/index.html">
+<meta property="og:site_name" content="黄海亮的博客">
+<meta property="og:description" content="title: Mask R-CNN 阅读笔记date: 2017-04-22 16:07:43tags: [Kaiming He,R-CNN]
+categories: 机器学习  阅读何凯明最新CVPR 2017《Mask R-CNN》文章所做的笔记，重点讲解了其背景、网络结构、ROIAlign、实现的效果。">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ObjectRecognition.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ObjectDetection1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ObjectDetection.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ObjectSegmentation.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/SemanticSegmentation.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/InstanceSegmentation.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/framework.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/netWork.PNG">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/loss.PNG">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/maskloss.PNG">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling2.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling3.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling4.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/roi_pooling-1.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIAlign.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/instancesegmentationTResult.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/instancesegmentationIResult.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ObjectDetectionTResult.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ObjectDetectionIResult.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/KeyPointTResult.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/KeyPointIResult.png">
+<meta property="og:updated_time" content="2017-04-28T06:42:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黄海亮的博客">
+<meta name="twitter:description" content="title: Mask R-CNN 阅读笔记date: 2017-04-22 16:07:43tags: [Kaiming He,R-CNN]
+categories: 机器学习  阅读何凯明最新CVPR 2017《Mask R-CNN》文章所做的笔记，重点讲解了其背景、网络结构、ROIAlign、实现的效果。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ObjectRecognition.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'> -->
+  <!-- <link href="//fonts.googleapis.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css"> -->
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css">
+  <link href='//fonts.useso.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <a href="/" class="logo">黄海亮的博客</a>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about/index.html">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://gavin-huang.github.io/archives"></form>
+        </div>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/Gavin-Huang" title="Fork me on GitHub"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <nav id="mobile-nav" class="off">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about/index.html" class="mobile-nav-link">About</a>
+  
+  <div id="search-form-wrap-mobile">
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://gavin-huang.github.io/archives"></form>
+  </div>
+</nav>
+      <div class="outer">
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/others/">其他</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">项目</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/28/Mask R-CNN 阅读笔记/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/02/作品展示/">个人项目展示</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/01/PasswordKeeper开源说明/">PasswordKeeper开源说明</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/07/ubuntu14.04下GPU版tensorflow安装说明/">ubuntu14.04下GPU版tensorflow安装说明</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/06/Ubuntu showsocks chrome 配置说明/">Ubuntu下showsocks chrome 配置说明</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WinForm/">WinForm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/">chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks-qt5/">shadowsocks-qt5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tensorflow/">tensorflow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人作品/">个人作品</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装说明/">安装说明</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码保险箱/">密码保险箱</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/积分/">积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序设计/">程序设计</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/说明文档/">说明文档</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ubuntu/" style="font-size: 20px;">Ubuntu</a> <a href="/tags/WinForm/" style="font-size: 10px;">WinForm</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a> <a href="/tags/shadowsocks-qt5/" style="font-size: 10px;">shadowsocks-qt5</a> <a href="/tags/tensorflow/" style="font-size: 10px;">tensorflow</a> <a href="/tags/个人作品/" style="font-size: 10px;">个人作品</a> <a href="/tags/安装说明/" style="font-size: 20px;">安装说明</a> <a href="/tags/密码保险箱/" style="font-size: 10px;">密码保险箱</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/积分/" style="font-size: 10px;">积分</a> <a href="/tags/程序设计/" style="font-size: 10px;">程序设计</a> <a href="/tags/说明文档/" style="font-size: 10px;">说明文档</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="https://github.com/Gavin-Huang">Gavin-Huang Github</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <section id="main"><article id="post-Mask R-CNN 阅读笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/28/Mask R-CNN 阅读笔记/" class="article-date">
+  <time datetime="2017-04-28T06:43:20.370Z" itemprop="datePublished">2017-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id=""><a href="#" class="headerlink" title=""></a><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></h2><p>title: Mask R-CNN 阅读笔记<br>date: 2017-04-22 16:07:43<br>tags: [Kaiming He,R-CNN]</p>
+<h2 id="categories-机器学习"><a href="#categories-机器学习" class="headerlink" title="categories: 机器学习"></a>categories: 机器学习</h2><p>  阅读何凯明最新CVPR 2017《Mask R-CNN》文章所做的笔记，重点讲解了其背景、网络结构、ROIAlign、实现的效果。<br><a id="more"></a></p>
+<h1 id="论文主要贡献"><a href="#论文主要贡献" class="headerlink" title="论文主要贡献"></a>论文主要贡献</h1><p>  Mask R-CNN 提出了一种简洁的方法来完成了实例分割、物体检测、人体关键点检测三种任务，方法的运行速度与fast r-cnn差不多，在当GPU上200ms一帧，这种方法通过在fast r-cnn的基础结构上加上了一个分支做模版预测，并且使用ROI（region of interest）Align代替ROI Pooling极大地提高了模版的准确率。在实例分割领域，以前最好的方法FCIS(Fully convolutional instance-aware semantic segmentation)是使用同一网络对每个像素进行分类和分割，这样的方法使得其网络结构复杂，而何凯明的方法采用增加分支的方法使得像素语义分割和物体分类分开，实验结果证明这种方法是行之有效的。</p>
+<h1 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h1><h3 id="物体识别"><a href="#物体识别" class="headerlink" title="物体识别"></a>物体识别</h3><p>  物体识别（Object Recognition）本质上将一张图片的所有类别都用带标签的包围盒框起来。<br>   <img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ObjectRecognition.png" alt="image segmentation"></p>
+<h3 id="物体检测"><a href="#物体检测" class="headerlink" title="物体检测"></a>物体检测</h3><p>  物体检测（Object Detection）是一个二分类问题，就是将所有属于这个类别的物体用包围盒找出来，例如人体检测，就是在图片中找出所有人体，并标出他们的位置。<br>   <img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ObjectDetection1.png" alt="image segmentation"></p>
+<h3 id="物体分割"><a href="#物体分割" class="headerlink" title="物体分割"></a>物体分割</h3><p>  物体分割（Object Segmentation）有点像物体识别，但是在物体分割除了输出物体的类别还要输出每个像素所属的类别。<br>  <img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ObjectDetection.png" alt="image segmentation"></p>
+<h3 id="图像分割"><a href="#图像分割" class="headerlink" title="图像分割"></a>图像分割</h3><p>  图像分割（Image Segmentation）根据图像区域的特征例如纹理、颜色等特征将图像分割成一些区域的图像。<br>  <img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ObjectSegmentation.png" alt="image segmentation"></p>
+<h3 id="语义分割"><a href="#语义分割" class="headerlink" title="语义分割"></a>语义分割</h3><p>  语义分割（Semantic Segmentation）比较难，他需要为每个像素标一个物体类别例如车、牛之类，对于非物体的像素还得标注其是什么例如天空、路等，换句话讲，语义分割得标注每个区域图像。<br>  <img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/SemanticSegmentation.png" alt="image segmentation"></p>
+<h3 id="实例分割"><a href="#实例分割" class="headerlink" title="实例分割"></a>实例分割</h3><p>  实例分割（Instance Segmentation）更难，语义分割只需要标注这块区域是什么类别，而实例分割不仅要做到语义的分割还要标注属于同一类别的每个像素属于哪个实例，这在聚集性的图片中显得尤为困难，以前大家的思路是FCN及其变种的end2end训练，这些网络最终不仅需要计算每个像素的分类还要计算每个像素的所属实例，也就是在分类后再去分实例。<br>  这些方法为了提高效果会加各种特效例如 （CRF、dilated convolution)。如下图（d）实例分割最终需要判断标注为椅子的每一个像素属于哪个椅子，在交叉区域，这种判断尤为困难，故现阶段这个是研究的重点。<br>  <img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/InstanceSegmentation.png" alt="image segmentation"></p>
+<h1 id="论文网络结构"><a href="#论文网络结构" class="headerlink" title="论文网络结构"></a>论文网络结构</h1><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>  作者在fast r-cnn已有的物体识别的分支上并行地又加了一个 mask分支，这种方法简单有效，在COCO数据集上针对实例分割、物体检测、人体关键点检测方面取得了当前最好的成绩。<br>  <img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/framework.png" alt="framework"></p>
+<h3 id="网络细节"><a href="#网络细节" class="headerlink" title="网络细节"></a>网络细节</h3><p>  Mask RCNN是在faster rcnn的基础上，加上了一个mask branch，对于经过RPN得到的一个proposal，经过ROI pooling的升级版——ROI Align之后得到m*m固定大小的feature map,之后一方面通过detection网络得到这个proposal的类别和坐标回归。另一方面通过mask branch得到对这个ROI的分割结果。假设数据集一共有K个类，那么mask的输出就是K个channel的binary score map。mask branch对于每一个类独立预测这个类的binary mask，而不是所有的类一起预测一个score map。这样，就把segmentation和classification分开来了。classification专门由detection部分的cls去做，mask branch只需要预测前景就行。<br>  <img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/netWork.PNG" alt="framework"></p>
+<ul>
+<li>图中网络出现的<code>res5</code>表示的是ResNet的第五阶段，。</li>
+<li>网络结构中出现的7*7*2048到14*14*256是反卷积，为的是能更准确地使mask对应到源图上对应的位置。</li>
+<li>除了输出的卷积核是1*1的以外所有的卷积核都是3*3，而反卷积核是2*2，使用2的步长，在隐藏层中使用ReLU作为激活函数。</li>
+<li>网络中出现的<code>*4</code>表示连续4次的卷积<h1 id="loss"><a href="#loss" class="headerlink" title="loss"></a>loss</h1><h2 id="loss-function"><a href="#loss-function" class="headerlink" title="loss function"></a>loss function</h2><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/loss.PNG" alt="loss function"></li>
+<li>Lcls 是分类loss</li>
+<li>Lbox 是bounding box loss</li>
+<li>Lmask 是mask的loss<br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/maskloss.PNG" alt="mask loss function"><h1 id="ROI-Align"><a href="#ROI-Align" class="headerlink" title="ROI Align"></a>ROI Align</h1><h3 id="ROI-Pooling"><a href="#ROI-Pooling" class="headerlink" title="ROI Pooling"></a>ROI Pooling</h3>在基于深度学习的物体识别领域，有一个关键问题，就是CNN只能针对固定大小的图像提取出固定大小的特征，这是卷积神经网络计算的固有要求，并且针对同一物体不同尺寸的图像，或是物体在图像位置发生了改变，会导致最后得到的特征发生剧烈的变化，会使得前期学习到的特征与这一特征难以调和，而由于物体检测本身面对的图片尺寸大小不一、目标物体位置不定，所以使用物体检测首先便要解决这一问题，人们首先想到的是裁剪缩放，直接将原始图像裁剪或者缩放到要求大小，这种方法简单直接，但会掉丢物体部分信息，如果物体在原始图像中的长宽比例与CNN输入的不一致，那么原始图像会被压缩或者拉伸这样使得最后提前到的特征信息的相对位置发生变化，对后续的分类显然不利。<br>在fast R-CNN中，通过一个RPN（region proposal network）来产生一个ROI,这个ROI大小形状不一，使用ROI pooling输出一个固定大小的feature map,以便完成后续的分类。<br>ROI pooling的思想很简单，就是区域分割，然后pooling.举个例子大家就明白了。</li>
+<li>例如8*8的一个feature map，需要输出一个2*2的ROI feature map<br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling1.jpg" alt="mask loss function"></li>
+<li>给定一个7*5的ROI<br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling2.jpg" alt="mask loss function"></li>
+<li>首先将7*5分割成4个部分，就是 [7/2]=3，[5/2]=2,这就是一个region划分，如图所示<br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling3.jpg" alt="mask loss function"></li>
+<li><p>然后再在每个region的划分里，去采用max或者avg Pooling,这样就能得到一个2*2的矩阵<br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling4.jpg" alt="mask loss function"></p>
+</li>
+<li><p>动态演示<br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/roi_pooling-1.gif" alt="mask loss function"></p>
+<h3 id="ROI-Align-1"><a href="#ROI-Align-1" class="headerlink" title="ROI Align"></a>ROI Align</h3><blockquote>
+<p>To address this, we propose an RoIAlign layer that re-<br>moves the harsh quantization of RoIPool, properly aligning<br>the extracted features with the input. Our proposed change<br>is simple: we avoid any quantization of the RoI boundaries<br>orbins(i.e., weusex/16insteadof[x/16]). We use bilinear<br>interpolation [22] to compute the exact values of the input<br>features at four regularly sampled locations in each RoI bin,<br>and aggregate the result (using max or average).</p>
+</blockquote>
+<p>在<code>ROI Pooling</code>处理过程中很明显地一个问题就是区域划分的不均衡，特征在pooling的过程中其实是发生了特征表达的位置变化，这种变化对于完成实例分割的mask branch会产生巨大地影响，因为实例分割是针对每个像素的分割，如果在pooling的过程中发生了偏移，那么反卷积过程中mask就会不准。<br>针对这个问题，作者提出了ROI Align的方法，这种方法采用：</p>
+</li>
+<li>使用浮点数来进行<code>feature map</code>的划分</li>
+<li>使用双线性插值来求进行map的pooling<br>针对<code>ROI Align</code>个人的理解是使用浮点数精确划分每个<code>ROI Bin</code>，还是之前的例子7*5的ROI,划分成2*2的<code>feature map</code>,那么划分的区域是7/2=3.5 5/2=2.5 ,在这里然后将离散化的每个<code>ROI Bin</code>里进行根据位置信息和数值的信息映射到高斯函数求得相应权重然后在领域内进行插值，插完值后再进行<code>max</code>或者<code>avg</code>pooling<br>作者通过测试使用<code>AOI Align</code>的方法使得mask的准确率提高了10%-50%.<br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIAlign.png" alt="mask loss function"><h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><h4 id="实例分割-1"><a href="#实例分割-1" class="headerlink" title="实例分割"></a>实例分割</h4><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/instancesegmentationTResult.png" alt="mask loss function"><br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/instancesegmentationIResult.png" alt="mask loss function"><h4 id="物体检测-1"><a href="#物体检测-1" class="headerlink" title="物体检测"></a>物体检测</h4><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ObjectDetectionTResult.png" alt="mask loss function"><br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ObjectDetectionIResult.png" alt="mask loss function"></li>
+</ul>
+<h4 id="人体关键点检测"><a href="#人体关键点检测" class="headerlink" title="人体关键点检测"></a>人体关键点检测</h4><p><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/KeyPointTResult.png" alt="mask loss function"><br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/KeyPointIResult.png" alt="mask loss function"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>  何凯明（Kaiming He）的想法很简单，所以大家都以为这篇论文很简单，其实作者在文章中完整地记录了网络中各种方法的实验结果比较例如<code>ROI pooling</code>、<code>ROI Warp</code>和<code>ROI Align</code>方法，并且对每种都做了是否双线性插值、是采用<code>AVG</code>还是<code>Max</code>Pooling等的结果比较，以及采用哪种网络当作<code>back bone</code>等等，作者做了很多实验性的工作，充分地验证了自己方法的效果。这篇文章思路清楚，方法简单，实验很充分，效果也比较好，处理速度也比较快，感觉应该很快会被大家所熟悉。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gavin-huang.github.io/archives/2017/04/28/Mask R-CNN 阅读笔记/" data-id="cj21h3lpr0000kcs7wa3ioqfw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/04/02/作品展示/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">个人项目展示</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <a href="/" class="logo">黄海亮的博客</a>
+      &copy; 2017 Gavin-Huang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollLoading.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
