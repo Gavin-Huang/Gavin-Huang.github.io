@@ -22,6 +22,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/loss.PNG">
 <meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/maskloss.PNG">
 <meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling2.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling3.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling4.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/roi_pooling-1.gif">
@@ -32,7 +33,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ObjectDetectionIResult.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/KeyPointTResult.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/KeyPointIResult.png">
-<meta property="og:updated_time" content="2017-04-28T07:01:56.000Z">
+<meta property="og:updated_time" content="2017-05-03T11:14:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mask R-CNN 阅读笔记">
 <meta name="twitter:description" content="阅读何凯明最新CVPR 2017《Mask R-CNN》文章所做的笔记，重点讲解了其背景、网络结构、ROIAlign、实现的效果。">
@@ -224,7 +225,7 @@
 <li>Lbox 是bounding box loss</li>
 <li>Lmask 是mask的loss<br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/maskloss.PNG" alt="mask loss function"><h1 id="ROI-Align"><a href="#ROI-Align" class="headerlink" title="ROI Align"></a>ROI Align</h1><h3 id="ROI-Pooling"><a href="#ROI-Pooling" class="headerlink" title="ROI Pooling"></a>ROI Pooling</h3>在基于深度学习的物体识别领域，有一个关键问题，就是CNN只能针对固定大小的图像提取出固定大小的特征，这是卷积神经网络计算的固有要求，并且针对同一物体不同尺寸的图像，或是物体在图像位置发生了改变，会导致最后得到的特征发生剧烈的变化，会使得前期学习到的特征与这一特征难以调和，而由于物体检测本身面对的图片尺寸大小不一、目标物体位置不定，所以使用物体检测首先便要解决这一问题，人们首先想到的是裁剪缩放，直接将原始图像裁剪或者缩放到要求大小，这种方法简单直接，但会掉丢物体部分信息，如果物体在原始图像中的长宽比例与CNN输入的不一致，那么原始图像会被压缩或者拉伸这样使得最后提前到的特征信息的相对位置发生变化，对后续的分类显然不利。<br>在fast R-CNN中，通过一个RPN（region proposal network）来产生一个ROI,这个ROI大小形状不一，使用ROI pooling输出一个固定大小的feature map,以便完成后续的分类。<br>ROI pooling的思想很简单，就是区域分割，然后pooling.举个例子大家就明白了。</li>
 <li>例如8*8的一个feature map，需要输出一个2*2的ROI feature map<br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling1.jpg" alt="一个8*8的feature map"></li>
-<li>给定一个7<em>5的ROI<br>![给定一个7</em>5的ROI](<a href="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling2.jpg" target="_blank" rel="external">https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling2.jpg</a>)</li>
+<li>给定一个7*5的ROI<br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling2.jpg" alt="给定一个7*5的ROI"></li>
 <li>首先将7*5分割成4个部分，就是 [7/2]=3，[5/2]=2,这就是一个region划分，如图所示<br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling3.jpg" alt="region划分"></li>
 <li><p>然后再在每个region的划分里，去采用max或者avg Pooling,这样就能得到一个2*2的矩阵<br><img src="https://raw.githubusercontent.com/Gavin-Huang/myMarkdownPics/master/res/ROIPooling4.jpg" alt="结果"></p>
 </li>
@@ -244,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gavin-huang.github.io/archives/2017/04/22/Mask R-CNN 阅读笔记/" data-id="cj21hq3f5000bsks7olcj6lok" class="article-share-link">Share</a>
+      <a data-url="https://gavin-huang.github.io/archives/2017/04/22/Mask R-CNN 阅读笔记/" data-id="cj28vyq510017rks70u00enji" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kaiming-He/">Kaiming He</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R-CNN/">R-CNN</a></li></ul>
